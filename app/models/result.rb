@@ -1,6 +1,6 @@
 class Result < ApplicationRecord
   belongs_to :user
-  has_many :perfume_results
+  has_many :perfume_results, dependent: :destroy
   has_many :perfumes, through: :perfume_results
 
   validates :name, presence: true
