@@ -1,9 +1,9 @@
 class Perfume < ApplicationRecord
-  has_many :perfume_results
+  has_many :perfume_results, dependent: :destroy
   has_many :results, through: :perfume_results
-  has_many :notes
-  has_many :reviews
-  has_many :favorites
+  has_many :notes, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :name, presence: true
   validates :description, presence: true
