@@ -1,33 +1,31 @@
- <div class="outer-container">
-    <div class="container">
-      <h1>TABLEAU DE BORD</h1>
-      <p>Bonjour, <%= current_user.name %></p>
-
-      <%= link_to infosperso_path, class: 'menu-item' do %>
-        <i class="fa-regular fa-user"></i>
-        <p>Informations personnelles</p>
-        <i class="fa-solid fa-caret-right"></i>
-      <% end %>
-
-      <%= link_to favorites_path, class: 'menu-item' do %>
-        <i class="fa-regular fa-heart"></i>
-        <p>Mes favoris</p>
-        <i class="fa-solid fa-caret-right"></i>
-      <% end %>
-
-      <%= link_to myresults_path, class: 'menu-item' do %>
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <p>Mes résultats</p>
-        <i class="fa-solid fa-caret-right"></i>
-      <% end %>
-
-
-        <i class="fa-solid fa-cart-shopping"></i>
-        <p>Mes achats</p>
-        <i class="fa-solid fa-caret-right"></i>
-
-      <div class="button">
-        <%= link_to "SE DECONNECTER", destroy_user_session_path, method: :delete, class: "logout-link" %>
-      </div>
-    </div>
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>TABLEAU DE BORD</h1>
+    <p>Bonjour, <%= current_user.name %></p>
   </div>
+
+  <div class="dashboard-menu">
+    <%= link_to infosperso_path, class: 'dashboard-item' do %>
+      <i class="fa fa-user"></i>
+      <span>Informations personnelles</span>
+      <i class="fa fa-caret-right"></i>
+    <% end %>
+
+    <%= link_to favorites_path, class: 'dashboard-item' do %>
+      <i class="fa fa-heart"></i>
+      <span>Mes favoris</span>
+      <i class="fa fa-caret-right"></i>
+    <% end %>
+
+    <%= link_to myresults_path, class: 'dashboard-item' do %>
+      <i class="fa fa-search"></i>
+      <span>Mes résultats</span>
+      <i class="fa fa-caret-right"></i>
+    <% end %>
+
+  </div>
+
+  <div class="dashboard-footer">
+    <%= link_to "SE DECONNECTER", destroy_user_session_path, method: :delete, class: "logout-link" %>
+  </div>
+</div>

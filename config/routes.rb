@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get 'favorites', to: 'pages#favorites'
   get 'infosperso', to: 'pages#infosperso'
   get 'myresults', to: 'pages#myresults'
+  get 'apropos', to: 'pages#apropos'
 end
