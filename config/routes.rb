@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   end
 
   resource :dashboard, only: [:show], controller: 'pages', action: 'dashboard'
- end
+
+  # Ajout des routes pour les pages supplémentaires
+  get 'favorites', to: 'pages#favorites'
+  get 'infosperso', to: 'pages#infosperso'
+  get 'myresults', to: 'pages#myresults'
+end

@@ -1,16 +1,28 @@
-<div class="Contenaire">
+ <div class="container mt-5">
+    <div class="d-flex align-items-center mb-4">
+      <%= link_to dashboard_path do %>
+        <i class="fa-solid fa-caret-left fa-2x me-2"></i>
+      <% end %>
+      <h1>MES FAVORIS</h1>
+    </div>
 
-  <i class="fa-solid fa-caret-left"></i>
-  <h1>MES FAVORIS</h1>
-
-  <div class="parfums">
-
-    <div class="img">Photo du parfum</div>
-    <i class="fa-solid fa-heart"></i>
-    <h2>Nom du parfum</h2>
-    <h3>Brand</h3>
-    <i class="fa-solid fa-caret-right"></i>
-
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <% current_user.favorite_perfumes.each do |perfume| %>
+        <div class="col">
+          <div class="card h-100">
+            <%= link_to perfume_path(perfume), class: "text-decoration-none text-dark" do %>
+              <div class="position-relative">
+                <img src="<%= perfume.photo %>" class="card-img-top" alt="<%= perfume.name %>">
+                <button class="btn btn-link position-absolute top-0 end-0"><i class="fa fa-heart"></i></button>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><%= perfume.name %></h5>
+                <p class="card-text"><%= perfume.brand %></p>
+                <p class="card-text"><%= number_to_currency(perfume.price, unit: "€") %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-</div>
