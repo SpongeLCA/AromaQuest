@@ -4,12 +4,14 @@ class ResultsController < ApplicationController
 
   def new
     @result = Result.new
+    @questions = questions
   end
 
   def create
-    @result = current_user.Result.build(result_params)
+    @result = Result.new(result_params)
+    @result.user_id = current_user.id
     if @result.save
-      redirect_to results_path, notice: 'Résultats enregistrés avec succès'
+      redirect_to result_path(@result), notice: 'Résultats enregistrés avec succès'
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,39 +23,40 @@ class ResultsController < ApplicationController
 
   def show
     @result = Result.find(params[:id])
-    @perfumes = Perfume.all
+    @perfumes = filter_perfumes(@result)
+    @perfumes_count = @perfumes.count
+  end
+
+  private
+
+  def result_params
+    params.require(:result).permit(:name, :description, :answer_1, :answer_2, :answer_3, :answer_4, :answer_5, :answer_6, :answer_7, :answer_8, :answer_9, :answer_10)
+  end
+
+  def filter_perfumes(result)
+    perfumes = Perfume.all
 
     # Filtrer par genre
-    if ["Femme", "Homme"].include?(@result.answer_2)
-      @perfumes_genre = @perfumes.where(genre: @result.answer_2)
-    else
-      @perfumes_genre = @perfumes
+    if ["Pour femme", "Pour homme"].include?(result.answer_2)
+      perfumes = perfumes.where(genre: result.answer_2)
     end
 
      # Filtrer par intensité
-    case @result.answer_3
+    case result.answer_3
     when "Ne passe pas inaperçu"
-      @perfumes_intensity = @perfumes_genre.where(intensity: 3..5)
+      perfumes = perfumes.where(intensity: 3..5)
     when "Est plutôt intime, juste pour vous"
-      @perfumes_intensity = @perfumes_genre.where(intensity: 1..3)
+      perfumes = perfumes.where(intensity: 1..3)
     end
 
     # Filtrer par période
-    case @result.answer_4
-    when "Journée", "Soirée"
-      @perfumes_period = @perfumes_intensity.where(period: @result.answer_4)
-    else
-      @perfumes_period = @perfumes_intensity
+    if ["Journée", "Soirée"].include?(result.answer_4)
+      perfumes = perfumes.where(period: result.answer_4)
     end
 
     # Filtrer par season
-    case @result.answer_5
-    when "Hiver"
-      @perfumes_season = @perfumes_period.where(season: @result.answer_5)
-    when "Eté"
-      @perfumes_season = @perfumes_period.where(season: @result.answer_5)
-    else
-      @perfumes_season = @perfumes_period
+    if ["Plutôt l’été", "Plutôt l’hiver"].include?(result.answer_5)
+      perfumes = perfumes.where(season: result.answer_5)
     end
 
     # Filtrer par price
@@ -62,52 +65,52 @@ class ResultsController < ApplicationController
     # end
 
     # Filtrer par situations
-    case @result.answer_7
-    when "un weekend intense"
-      @perfumes_situations = @perfumes_season.where(situations: @result.answer_7)
-    when "un déjeuner entre amis"
-      @perfumes_situations = @perfumes_season.where(situations: @result.answer_7)
-    when "un moment cocooning"
-      @perfumes_situations = @perfumes_season.where(situations: @result.answer_7)
-    else
-      @perfumes_situations = @perfumes_season
+    if ["Un week-end intense", "Un déjeuner entre amis", "Un moment cocooning"].include?(result.answer_7)
+      perfumes = perfumes.where(situations: result.answer_7)
     end
 
     # Filtrer par smells
-    answer_8_array = @result.answer_8.split(" ")
-    case answer_8_array[0]
-    when "des embruns rafraichissants"
-      @perfumes_smell = @perfumes_situations.where(smell: @result.answer_8)
-    when "un bouquet d’herbes et d’aromates"
-      @perfumes_smell = @perfumes_situations.where(smell: @result.answer_8)
-    when "un bouquet de fleurs"
-      @perfumes_smell = @perfumes_situations.where(smell: @result.answer_8)
-    when "un cocktail intense et puissant"
-      @perfumes_smell = @perfumes_situations.where(smell: @result.answer_8)
-    when "un fruit frais ou sucre"
-      @perfumes_smell = @perfumes_situations.where(smell: @result.answer_8)
-    when "un dessert très gourmand"
-      @perfumes_smell = @perfumes_situations.where(smell: @result.answer_8)
-    when "un jus d’agrumes vitamine"
-      @perfumes_smell = @perfumes_situations.where(smell: @result.answer_8)
-    when "une balade en forêt"
-      @perfumes_smell = @perfumes_situations.where(smell: @result.answer_8)
-    when "un souvenir de vacances épicé"
-      @perfumes_smell = @perfumes_situations.where(smell: @result.answer_8)
-    when "un lait doux et vanille"
-      @perfumes_smell = @perfumes_situations.where(smell: @result.answer_8)
-    else
-      @perfumes_smell = @perfumes_situations
+    answer_8_array = result.answer_8.split(",")
+    if ["Un jus d’agrumes vitaminé", "Un bouquet de fleurs", "Un fruit frais ou sucré", "Un dessert très gourmand", "Une balade en forêt", "Un bouquet d’herbes et aromates", "Des embruns rafraichissants", "Un souvenir de vacances épicé", "Un cocktail intense et puissant"].include?(answer_8_array[0])
+      perfumes = perfumes.where(smell: answer_8_array[0].to_s)
     end
-
-    @perfumes_count = @perfumes.count
-
-
+    perfumes
   end
 
-  private
-
-  def result_params
-    params.require(:result).permit(:name, :description, :answer_1, :answer_2, :answer_3, :answer_4, :answer_5, :answer_6, :answer_7, :answer_8, :answer_9, :answer_10)
+  def questions
+    [
+      {
+        question: "A qui est destiné le parfum ?",
+        answers: ["A un proche", "A vous même"]
+      },
+      {
+        question: "Quel type de parfum cherchez-vous ?",
+        answers: ["Pour femme", "Pour homme", "Mixte"]
+      },
+      {
+        question: "Un parfum qui :",
+        answers: ["Ne passe pas inaperçu", "Est plutôt intime, juste pour vous"]
+      },
+      {
+        question: "Un parfum à porter :",
+        answers: ["Journée", "Soirée", "Tout le temps"]
+      },
+      {
+        question: "Un parfum à porter :",
+        answers: ["Plutôt l'été", "Plutôt l’hiver", "Toute l’année"]
+      },
+      {
+        question: "Quel est votre budget ?",
+        answers: [0, 300]
+      },
+      {
+        question: "Un parfum pour :",
+        answers: ["Un week-end intense", "Un déjeuner entre amis", "Un moment cocooning", "Toute occasion"]
+      },
+      {
+        question: "Un parfum pour :",
+        answers: ["Un jus d’agrumes vitaminé", "Un bouquet de fleurs", "Un fruit frais ou sucré", "Un dessert très gourmand", "Une balade en forêt", "Un bouquet d’herbes et aromates", "Des embruns rafraichissants", "Un souvenir de vacances épicé", "Un cocktail intense et puissant"]
+      }
+    ]
   end
 end
