@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Questionnaire</h1>
+
+  <%= simple_form_for @result do |f| %>
+    <% @questions.each_with_index do |q, index| %>
+      <div class="field">
+        <%= f.input "answer_#{index + 1}".to_sym, collection: q[:answers], label: q[:question], as: :radio_buttons %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.button :submit, "Enregistrer" %>
+    </div>
+  <% end %>
+</div>

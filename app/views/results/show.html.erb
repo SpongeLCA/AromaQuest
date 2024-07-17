@@ -1,19 +1,21 @@
-<h1>Parfums pour <%= @result.name %></h1>
-<p><%= @result.description %></p>
+<div class="container">
+  <h1>Parfums pour <%= @result.name %></h1>
+  <p><%= @result.description %></p>
 
-<p>Nombre de résultats : <%= @perfumes_count %></p>
+  <p>Nombre de résultats : <%= @perfumes_count %></p>
 
-<ul>
-  <% @perfumes.each do |perfume| %>
-    <li>
-      <strong><%= perfume.name %></strong><br>
-      Genre: <%= perfume.genre %><br>
-      Intensité: <%= perfume.intensity %><br>
-      Période: <%= perfume.period %><br>
-      Saison: <%= perfume.season %><br>
-      Prix: <%= perfume.price %> €<br>
-      Situations: <%= perfume.situations %><br>
-      Odeur: <%= perfume.smell %>
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @perfumes.each do |perfume| %>
+      <li>
+        <strong><%= perfume.name %></strong><br>
+        Genre: <%= perfume.genre %><br>
+        Intensité: <%= perfume.intensity %><br>
+        Période: <%= perfume.period %><br>
+        Saison: <%= perfume.season %><br>
+        Prix: <%= perfume.price %> €<br>
+        Situations: <%= perfume.situations %><br>
+        Odeur: <%= perfume.smell %>
+      </li>
+    <% end %>
+  </ul>
+</div>
