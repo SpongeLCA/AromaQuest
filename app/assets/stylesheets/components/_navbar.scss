@@ -1,32 +1,32 @@
 .navbar-dark {
-  background-color: #000; /* Arrière-plan noir */
+  background-color: #000 !important; /* Arrière-plan noir */
 }
 
 .navbar-brand {
   font-weight: bold;
   font-size: 1.5rem;
-  color: #fff; /* Texte blanc */
+  color: #fff !important; /* Texte blanc */
 }
 
 .nav-link {
-  color: #fff; /* Texte blanc */
+  color: #fff !important; /* Texte blanc */
   font-weight: 500;
 }
 
 .nav-link:hover {
-  color: #ddd; /* Couleur du texte au survol */
+  color: #ddd !important; /* Couleur du texte au survol */
 }
 
 .dropdown-menu {
-  background-color: #000; /* Arrière-plan noir pour le menu déroulant */
+  background-color: #f5f5f5 !important; /* Arrière-plan beige clair */
 }
 
 .dropdown-item {
-  color: #fff; /* Texte blanc pour les éléments du menu déroulant */
+  color: #000 !important; /* Texte noir */
 }
 
 .dropdown-item:hover {
-  background-color: #333; /* Couleur de fond au survol pour les éléments du menu déroulant */
+  background-color: #e0e0e0 !important; /* Couleur de fond au survol */
 }
 
 .navbar-toggler {
@@ -35,25 +35,4 @@
 
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-.avatar {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  background-color: #000;
-  padding: 0.5rem 0;
-}
-
-.footer .nav-link {
-  color: #e74c3c;
-  font-weight: bold;
 }

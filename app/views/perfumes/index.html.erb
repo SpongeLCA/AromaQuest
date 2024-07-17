@@ -1,97 +1,88 @@
 <div class="container mt-5">
-    <div class="text-center">
-      <h1 class="display-4">TOUS LES PARFUMS</h1>
-      <p class="lead">Une sélection de parfums choisis par nos soins, qui évolue au fil des saisons.</p>
+  <div class="text-center">
+    <h1 class="display-4">TOUS LES PARFUMS</h1>
+    <p class="lead">Une sélection de parfum choisis par nos soins, qui évolue au fil des saisons.</p>
+  </div>
+  <div class="row mb-4">
+    <div class="col text-end">
+      <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterCanvas" aria-controls="filterCanvas">
+        <i class="bi bi-funnel"></i> FILTRER ET TRIER
+      </button>
     </div>
-    <div class="row mb-4">
-      <div class="col">
-        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#filterOptions" aria-expanded="false" aria-controls="filterOptions">
-          Filtrer et Trier
-        </button>
-      </div>
+  </div>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="filterCanvas" aria-labelledby="filterCanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="filterCanvasLabel">FILTRER ET TRIER</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="collapse mb-4" id="filterOptions">
-      <div class="card card-body">
-        <form action="<%= perfumes_path %>" method="get">
-          <div class="mb-3">
-            <label for="intensity" class="form-label">INTENSITÉ</label>
-            <select class="form-select" id="intensity" name="intensity">
-              <option value="">Sélectionner</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="heart_notes" class="form-label">NOTES DE COEUR</label>
-            <select class="form-select" id="heart_notes" name="heart_notes">
-              <option value="">Sélectionner</option>
-              <!-- Ajoute les options pour les notes de coeur -->
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="head_notes" class="form-label">NOTES DE TÊTES</label>
-            <select class="form-select" id="head_notes" name="head_notes">
-              <option value="">Sélectionner</option>
-              <!-- Ajoute les options pour les notes de tête -->
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="base_notes" class="form-label">NOTES DE FOND</label>
-            <select class="form-select" id="base_notes" name="base_notes">
-              <option value="">Sélectionner</option>
-              <!-- Ajoute les options pour les notes de fond -->
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="sort" class="form-label">TRIER PAR</label>
-            <div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="sort" id="recommended" value="recommended" checked>
-                <label class="form-check-label" for="recommended">
-                  Recommandés
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="sort" id="price_asc" value="price_asc">
-                <label class="form-check-label" for="price_asc">
-                  Prix croissant
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="sort" id="price_desc" value="price_desc">
-                <label class="form-check-label" for="price_desc">
-                  Prix décroissant
-                </label>
-              </div>
+    <div class="offcanvas-body">
+      <%= form_with url: perfumes_path, method: :get, local: true do |form| %>
+        <div class="mb-3">
+          <label for="intensity" class="form-label">INTENSITÉ</label>
+          <%= form.select :intensity, options_for_select([['Sélectionner', ''], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]], params[:intensity]), { include_blank: true }, { class: 'form-select' } %>
+        </div>
+        <div class="mb-3">
+          <label for="heart_notes" class="form-label">NOTES DE COEUR</label>
+          <%= form.select :heart_notes, options_for_select([['Sélectionner', ''], ['Florale', 'florale'], ['Fruité', 'fruité'], ['Epicée', 'epicée']], params[:heart_notes]), { include_blank: true }, { class: 'form-select' } %>
+        </div>
+        <div class="mb-3">
+          <label for="head_notes" class="form-label">NOTES DE TÊTE</label>
+          <%= form.select :head_notes, options_for_select([['Sélectionner', ''], ['Citrus', 'citrus'], ['Menthe', 'menthe'], ['Lavande', 'lavande']], params[:head_notes]), { include_blank: true }, { class: 'form-select' } %>
+        </div>
+        <div class="mb-3">
+          <label for="base_notes" class="form-label">NOTES DE FOND</label>
+          <%= form.select :base_notes, options_for_select([['Sélectionner', ''], ['Boisée', 'boisée'], ['Vanille', 'vanille'], ['Musc', 'musc']], params[:base_notes]), { include_blank: true }, { class: 'form-select' } %>
+        </div>
+        <div class="mb-3">
+          <label for="sort" class="form-label">TRIER PAR</label>
+          <div>
+            <div class="form-check">
+              <%= form.radio_button :sort, 'recommended', checked: params[:sort] == 'recommended', class: 'form-check-input' %>
+              <label class="form-check-label" for="recommended">Recommandés</label>
+            </div>
+            <div class="form-check">
+              <%= form.radio_button :sort, 'price_asc', checked: params[:sort] == 'price_asc', class: 'form-check-input' %>
+              <label class="form-check-label" for="price_asc">Prix croissant</label>
+            </div>
+            <div class="form-check">
+              <%= form.radio_button :sort, 'price_desc', checked: params[:sort] == 'price_desc', class: 'form-check-input' %>
+              <label class="form-check-label" for="price_desc">Prix décroissant</label>
             </div>
           </div>
+        </div>
+        <div class="d-flex justify-content-between">
           <button type="reset" class="btn btn-secondary">Effacer</button>
           <button type="submit" class="btn btn-primary">Valider</button>
-        </form>
-      </div>
-    </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-      <% @perfumes.each do |perfume| %>
-        <div class="col">
-          <div class="card h-100">
-            <%= link_to perfume_path(perfume), class: "text-decoration-none text-dark" do %>
-              <div class="position-relative">
-                <img src="<%= perfume.photo %>" class="card-img-top" alt="<%= perfume.name %>">
-                <%= form_with url: perfume_favorites_path(perfume), method: :post do %>
-                  <button id="favorite-button-<%= perfume.id %>" class="btn btn-link position-absolute top-0 end-0"><i class="fa fa-heart"></i></button>
-                <% end %>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><%= perfume.name %></h5>
-                <p class="card-text"><%= perfume.brand %></p>
-                <p class="card-text"><%= number_to_currency(perfume.price, unit: "€") %></p>
-              </div>
-            <% end %>
-          </div>
         </div>
       <% end %>
     </div>
   </div>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <% @perfumes.each do |perfume| %>
+      <div class="col">
+        <div class="card h-100">
+          <%= link_to perfume_path(perfume), class: "text-decoration-none text-dark" do %>
+            <div class="position-relative">
+              <img src="<%= perfume.photo %>" class="card-img-top" alt="<%= perfume.name %>">
+              <button class="btn btn-link position-absolute top-0 end-0"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= perfume.name %></h5>
+              <p class="card-text"><%= perfume.brand %></p>
+              <p class="card-text"><%= number_to_currency(perfume.price, unit: "€") %></p>
+              <p class="card-text">Avis (<%= perfume.reviews_count %>)</p>
+              <div class="rating">
+                <% perfume.rating.times do %>
+                  <i class="bi bi-star-fill"></i>
+                <% end %>
+                <% (5 - perfume.rating).times do %>
+                  <i class="bi bi-star"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
