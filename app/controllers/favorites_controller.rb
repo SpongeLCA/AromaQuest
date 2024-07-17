@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @favorite = current_user.Favorite.build(perfume_id: params[:perfume_id])
+    @favorite = current_user.favorites.build(perfume_id: params[:perfume_id])
     if @favorite.save
       redirect_to dashboard_path, notice: 'Ajouté aux favoris'
     else
