@@ -23,15 +23,15 @@
         </div>
         <div class="mb-3">
           <label for="heart_notes" class="form-label">NOTES DE COEUR</label>
-          <%= form.select :heart_notes, options_for_select([['Sélectionner', ''], ['Florale', 'florale'], ['Fruité', 'fruité'], ['Epicée', 'epicée']], params[:heart_notes]), { include_blank: true }, { class: 'form-select' } %>
+          <%= form.select :heart_notes, options_for_select([['Sélectionner', ''], 'Bergamote', 'Lavande', 'Mandarine', 'Amande']), { include_blank: true }, { class: 'form-select' } %>
         </div>
         <div class="mb-3">
           <label for="head_notes" class="form-label">NOTES DE TÊTE</label>
-          <%= form.select :head_notes, options_for_select([['Sélectionner', ''], ['Citrus', 'citrus'], ['Menthe', 'menthe'], ['Lavande', 'lavande']], params[:head_notes]), { include_blank: true }, { class: 'form-select' } %>
+          <%= form.select :head_notes, options_for_select([['Sélectionner', ''], 'Iris', 'Jasmin Sambac', 'Basilic', 'Cuir']), { include_blank: true }, { class: 'form-select' } %>
         </div>
         <div class="mb-3">
           <label for="base_notes" class="form-label">NOTES DE FOND</label>
-          <%= form.select :base_notes, options_for_select([['Sélectionner', ''], ['Boisée', 'boisée'], ['Vanille', 'vanille'], ['Musc', 'musc']], params[:base_notes]), { include_blank: true }, { class: 'form-select' } %>
+          <%= form.select :base_notes, options_for_select([['Sélectionner', ''], 'Vanille', 'Bois de santal', 'Thé vert', 'Vanille']), { include_blank: true }, { class: 'form-select' } %>
         </div>
         <div class="mb-3">
           <label for="sort" class="form-label">TRIER PAR</label>
@@ -70,12 +70,12 @@
               <h5 class="card-title"><%= perfume.name %></h5>
               <p class="card-text"><%= perfume.brand %></p>
               <p class="card-text"><%= number_to_currency(perfume.price, unit: "€") %></p>
-              <p class="card-text">Avis (<%= perfume.reviews_count %>)</p>
+              <p class="card-text">Avis (<%= perfume.reviews.count %>)</p>
               <div class="rating">
-                <% perfume.rating.times do %>
+                <% perfume.reviews.average(:rating).to_i.times do %>
                   <i class="bi bi-star-fill"></i>
                 <% end %>
-                <% (5 - perfume.rating).times do %>
+                <% (5 - perfume.reviews.average(:rating).to_i).times do %>
                   <i class="bi bi-star"></i>
                 <% end %>
               </div>

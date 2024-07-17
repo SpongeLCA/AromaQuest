@@ -1,63 +1,42 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <%= link_to "AROMAQUEST", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <%= link_to "AROMAQUEST", root_path, class: "navbar-brand" %>
-    <div class="collapse navbar-collapse" id="navbarContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 flex-column">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <%= link_to "QUESTIONNAIRE", "#", class: "nav-link" %>
+          <%= link_to "QUESTIONNAIRE", new_result_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "PARFUMS", perfumes_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "À PROPOS", "#", class: "nav-link" %>
+          <%= link_to "À PROPOS", apropos_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            MON COMPTE
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="accountDropdown">
-            <li><%= link_to "FAVORIS", favorites_path, class: "dropdown-item" %></li>
-            <li><%= link_to "RÉSULTATS", myresults_path, class: "dropdown-item" %></li>
-            <li><%= link_to "MES ACHATS", class: "dropdown-item" %></li>
-          </ul>
-        </li>
-      </ul>
-      <% if user_signed_in? %>
-        <ul class="navbar-nav flex-column">
+        <% if user_signed_in? %>
           <li class="nav-item">
-            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#logoutModal">SE DÉCONNECTER</a>
+            <%= link_to "MON COMPTE", dashboard_path, class: "nav-link" %>
           </li>
-        </ul>
-      <% else %>
-        <ul class="navbar-nav flex-column">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              PLUS
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><%= link_to "FAVORIS", favorites_path, class: "dropdown-item" %></li>
+              <li><%= link_to "RÉSULTATS", myresults_path, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <%= link_to "SE DÉCONNECTER", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
           <li class="nav-item">
             <%= link_to "SE CONNECTER", new_user_session_path, class: "nav-link" %>
           </li>
-        </ul>
-      <% end %>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>
-
-<!-- Modal de confirmation de déconnexion -->
-<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content" style="background-color: #000; color: #fff;">
-      <div class="modal-header" style="border-bottom: 1px solid #333;">
-        <h5 class="modal-title" id="logoutModalLabel">Confirmation de Déconnexion</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Êtes-vous sûr de vouloir vous déconnecter?
-      </div>
-      <div class="modal-footer" style="border-top: 1px solid #333;">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-        <%= button_to "Se Déconnecter", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
-      </div>
-    </div>
-  </div>
-</div>

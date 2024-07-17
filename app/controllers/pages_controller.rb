@@ -15,10 +15,12 @@ class PagesController < ApplicationController
   end
 
   def infosperso
-    # Logique pour les informations personnelles
   end
 
   def myresults
     @results = current_user.results
+  end
+
+  def apropos
   end
 end
