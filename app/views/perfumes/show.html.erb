@@ -1,31 +1,81 @@
-<div class="container">
-  <div class="retour">
-    <i class="fa-solid fa-arrow-left"></i>
-    <p>Retour</p>
+<div class="container mt-3">
+  <div class="retour mb-3">
+    <%= link_to '<i class="fa-solid fa-arrow-left"></i> RETOUR'.html_safe, perfumes_path, class: "btn btn-link" %>
   </div>
 
-  <div class="img">
-    <i class="fa-regular fa-heart"></i>
-    <div class="img">Photo du parfum</div>
-    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-    <p>Favori</p>
-    <p>Price</p>
+  <div class="row">
+    <div class="col-12 text-center">
+      <div class="position-relative">
+        <% if @perfume.photo.present? %>
+          <%= image_tag @perfume.photo, alt: @perfume.name, class: "img-fluid" %>
+        <% else %>
+          <p>Photo du parfum</p>
+        <% end %>
+        <button class="btn btn-link position-absolute top-0 end-0"><i class="fa-regular fa-heart"></i></button>
+        <button class="btn btn-link position-absolute bottom-0 end-0"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+      </div>
+      <p class="mt-2"><strong>Favori</strong></p>
+      <p><%= number_to_currency(@perfume.price, unit: "€") %></p>
+      <div class="d-grid gap-2">
+        <%= link_to 'Trouver mon parfum', perfumes_path, class: 'btn btn-dark btn-block mt-3' %>
+      </div>
+      <!-- Afficher uniquement l'icône du panier -->
+      <i class="fa-solid fa-cart-shopping mt-2"></i>
+    </div>
+
+    <div class="col-12 mt-4">
+      <div class="parfum-details">
+        <h1><%= @perfume.name %></h1>
+        <h2><%= @perfume.brand %></h2>
+        <h3>Intensité: <%= @perfume.intensity %></h3>
+        <div class="ratings">
+          <p>Avis (<%= @perfume.reviews.count %>)</p>
+          <% average_rating = @perfume.reviews.average(:rating).to_f.round(1) %>
+          <% 5.times do |i| %>
+            <% if (i + 1) <= average_rating %>
+              <i class="fa-solid fa-star"></i>
+            <% elsif (i + 0.5) <= average_rating %>
+              <i class="fa-solid fa-star-half-alt"></i>
+            <% else %>
+              <i class="fa-regular fa-star"></i>
+            <% end %>
+          <% end %>
+        </div>
+        <p class="mt-3"><%= @perfume.description %></p>
+      </div>
+    </div>
+
+    <div class="col-12 mt-4">
+      <h4>Avis des utilisateurs</h4>
+      <% @perfume.reviews.each do |review| %>
+        <div class="review">
+          <div class="rating">
+            <% review.rating.times do %>
+              <i class="fa-solid fa-star"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <i class="fa-regular fa-star"></i>
+            <% end %>
+          </div>
+          <p><%= review.comment %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <p> Boutton Trouver mon parfum</p>
-  <p> Boutton Ajouter au panier</p>
-  <i class="fa-solid fa-cart-shopping"></i>
-
-  <div class="parfum">
-    <h1>parfum name</h1>
-    <h2>Brand</h2>
-    <h3>Intensité</h3>
-    <p>Elle sème le trouble sur son passage et parfois même provoque avec malice, jouant de l’ambiguïté de ses courbes androgynes. Dans l’ombre de sa silhouette, le souvenir de Jicky, une femme dont Aimé Guerlain tomba amoureux lors de ses études en Angleterre. Le parfumeur rendra hommage à cet amour de jeunesse avec un sillage si révolutionnaire qu’il fut qualifié de premier parfum moderne. Jicky brise les frontières du masculin-féminin et surprend par la radicalité de ses contrastes. Quand sa lavande citronnée et son accord de fougère soufflent le froid, ses notes boisées et vanillées apportent chaleur et caractère. S’il dérouta d’abord les femmes autant qu’il séduisit les hommes, avant d’être adopté par tous, Jicky demeure à jamais « de l’émotion offerte dans un flacon ».</p>
+  <div class="description-notes mt-4">
+    <p>Note de parfum</p>
+    <i class="fa-solid fa-caret-up"></i>
+    <% if @perfume.notes.any? %>
+      <% @perfume.notes.each do |note| %>
+        <ul>
+          <li><strong>Notes de tête :</strong> <%= note.tete %></li>
+          <li><strong>Notes de cœur :</strong> <%= note.coeur %></li>
+          <li><strong>Notes de fond :</strong> <%= note.fond %></li>
+        </ul>
+      <% end %>
+    <% else %>
+      <p>Aucune note disponible pour ce parfum.</p>
+    <% end %>
   </div>
-
-<div class="description-notes">
-  <p>Note de parfum</p>
-  <i class="fa-solid fa-caret-up"></i>
-</div>
-
 </div>
