@@ -1,12 +1,38 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
+.navbar-dark {
+  background-color: #000 !important; /* Arrière-plan noir */
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff !important; /* Texte blanc */
+  }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+  .nav-link {
+    color: #fff !important; /* Texte blanc */
+    font-weight: 500;
+
+    &:hover {
+      color: #ddd !important; /* Couleur du texte au survol */
+    }
+  }
+
+  .navbar-toggler {
+    border: none;
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+  }
+
+  .dropdown-menu {
+    background-color: #f5f5f5 !important; /* Arrière-plan beige clair */
+
+    .dropdown-item {
+      color: #000 !important; /* Texte noir */
+
+      &:hover {
+        background-color: #e0e0e0 !important; /* Couleur de fond au survol */
+      }
+    }
+  }
 }

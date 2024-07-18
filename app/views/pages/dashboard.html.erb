@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
   <h2>TABLEAU DE BORD</h2>
   <p>Bonjour <%= current_user.name %></p>
@@ -29,4 +30,36 @@
   <div>
     <%= link_to "SE DECONNECTER", destroy_user_session_path %>
   </div>
+=======
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>TABLEAU DE BORD</h1>
+    <p>Bonjour, <%= current_user.name %></p>
+  </div>
+
+  <div class="dashboard-menu">
+    <%= link_to infosperso_path, class: 'dashboard-item' do %>
+      <i class="fa fa-user"></i>
+      <span>Informations personnelles</span>
+      <i class="fa fa-caret-right"></i>
+    <% end %>
+
+    <%= link_to favorites_path, class: 'dashboard-item' do %>
+      <i class="fa fa-heart"></i>
+      <span>Mes favoris</span>
+      <i class="fa fa-caret-right"></i>
+    <% end %>
+
+    <%= link_to myresults_path, class: 'dashboard-item' do %>
+      <i class="fa fa-search"></i>
+      <span>Mes résultats</span>
+      <i class="fa fa-caret-right"></i>
+    <% end %>
+
+  </div>
+
+  <div class="dashboard-footer">
+    <%= link_to "SE DECONNECTER", destroy_user_session_path, method: :delete, class: "logout-link" %>
+  </div>
+>>>>>>> 9e135dc5c6e089955276348d6574c40509d2e747
 </div>
