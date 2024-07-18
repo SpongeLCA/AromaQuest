@@ -13,7 +13,7 @@
           <%= link_to "PARFUMS", perfumes_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "À PROPOS", apropos_path, class: "nav-link" %>
+          <%= link_to "À PROPOS", apropos_dashboard_path, class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
@@ -24,8 +24,8 @@
               PLUS
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><%= link_to "FAVORIS", favorites_path, class: "dropdown-item" %></li>
-              <li><%= link_to "RÉSULTATS", myresults_path, class: "dropdown-item" %></li>
+              <li><%= link_to "FAVORIS", favorites_dashboard_path, class: "dropdown-item" %></li>
+              <li><%= link_to "RÉSULTATS", results_dashboard_path, class: "dropdown-item" %></li>
             </ul>
           </li>
           <li class="nav-item">
