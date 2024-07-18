@@ -4,12 +4,8 @@ class FavoritesController < ApplicationController
 
 
   def create
-<<<<<<< HEAD
     @favorite = Favorite.new(perfume_id: params[:perfume_id])
     @favorite.user_id = current_user.id
-=======
-    @favorite = current_user.favorites.build(perfume_id: params[:perfume_id])
->>>>>>> 9e135dc5c6e089955276348d6574c40509d2e747
     if @favorite.save
       redirect_to favorites_dashboard_path, notice: 'Ajouté aux favoris'
     else
