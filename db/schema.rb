@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.1].define(version: 2024_07_18_101324) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -90,6 +92,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_18_101324) do
     t.integer "intensity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "genre"
+    t.string "period"
+    t.string "season"
+    t.string "situations"
+    t.string "smell"
   end
 
   create_table "results", force: :cascade do |t|
@@ -109,6 +116,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_18_101324) do
     t.string "answer_8"
     t.string "answer_9"
     t.string "answer_10"
+    t.integer "budget_min"
+    t.integer "budget_max"
     t.index ["user_id"], name: "index_results_on_user_id"
   end
 
@@ -136,6 +145,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_18_101324) do
     t.string "address"
     t.float "lat"
     t.float "long"
+    t.boolean "notifications"
+    t.boolean "newsletter"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,29 +1,31 @@
 <div class="container">
 
-  <i class="fa-solid fa-caret-left"></i>
-  <h1>MES RESULTATS</h1>
+  <div class="d-flex">
+    <%= link_to dashboard_path do %>
+      <i class="fa-solid fa-caret-left"></i>
+    <% end %>
+    <h2>MES RESULTATS</h2>
+  </div>
 
   <p>Retrouvez les listes de parfums générées via les questionnaires effectués.</p>
 
-  <div class="toutmesresultats">
+  <div>
     <p>TOUS MES RESULTATS</p>
-    <i class="fa-solid fa-caret-right"></i>
+    <i class="fa-solid fa-caret-down"></i>
   </div>
+  <div>
+    <% @results.each do |result| %>
+      <%= link_to result_path(result) do %>
+        <p>Vos résultats du <%= result.created_at %></p>
+      <% end %>
+    <% end %>
+  </div>
+
 
  <h2>CES PARFUMS QUI VOUS CORRESPONDENT...</h2>
 
  <P>Ces parfums ont été plusieurs fois proposés à la suite de vos questionnaires :</P>
 
-
-  <div class="parfums">
-
-    <div class="img">Photo du parfum</div>
-    <i class="fa-solid fa-heart"></i>
-    <h2>Nom du parfum</h2>
-    <h3>Brand</h3>
-    <i class="fa-solid fa-caret-right"></i>
-
-  </div>
 
   <div class="parfums">
 

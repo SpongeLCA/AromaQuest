@@ -1,33 +1,33 @@
+
 <div class="container">
-  <h1>TABLEAU DE BORD</h1>
-  <p>Bonjour, @username</p>
+  <h2>TABLEAU DE BORD</h2>
+  <p>Bonjour <%= current_user.name %></p>
 
-  <div class="informationspersonnelles">
+  <div>
     <i class="fa-regular fa-user"></i>
-    <p>Informations personnelles</p>
+    <%= link_to "Informations personnelles", infos_dashboard_path %>
     <i class="fa-solid fa-caret-right"></i>
   </div>
 
-  <div class="mesfavoris">
+  <div>
     <i class="fa-regular fa-heart"></i>
-    <p>Mes favoris</p>
+    <%= link_to "Mes favoris", favorites_dashboard_path %>
     <i class="fa-solid fa-caret-right"></i>
   </div>
 
-  <div class="mesresultats">
+  <div>
     <i class="fa-solid fa-magnifying-glass"></i>
-    <p>Mes résultats</p>
+        <%= link_to "Mes résultats", results_dashboard_path %>
     <i class="fa-solid fa-caret-right"></i>
   </div>
 
-  <div class="mesachats">
+  <%# <div class="mesachats">
     <i class="fa-solid fa-cart-shopping"></i>
     <p>Mes achats</p>
     <i class="fa-solid fa-caret-right"></i>
-  </div>
+  </div> %>
 
-  <div class="button">
-    <p>SE DECONNECTER</p>
+  <div>
+    <%= link_to "SE DECONNECTER", destroy_user_session_path %>
   </div>
-
 </div>
