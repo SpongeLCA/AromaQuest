@@ -3,13 +3,23 @@
 
   <%= simple_form_for @result do |f| %>
     <% @questions.each_with_index do |q, index| %>
-      <div class="field">
-        <%= f.input "answer_#{index + 1}".to_sym, collection: q[:answers], label: q[:question], as: :radio_buttons %>
-      </div>
-    <% end %>
-
-    <div class="actions">
-      <%= f.button :submit, "Enregistrer" %>
+      <div class="form-group">
+      <%= f.label "question_#{index + 1}", q[:question] %><br>
+      <% if q[:question] == "Quel est votre budget ?" %>
+          <%= f.input :budget_min, label: "Prix minimum", input_html: { min: 0, step: 1 } %>
+          <%= f.input :budget_max, label: "Prix maximum", input_html: { min: 0, step: 1 } %>
+      <%# <% elsif q[:question] == "Un parfum qui sent comme :" %>
+        <%# <% q[:answers].each do |answer| %> %>
+          <%# <%= f.check_box "answer_#{index + 1}", { multiple: true, checked_value: answer, unchecked_value: nil, id: "answer_#{index + 1}_#{answer}" } %> %>
+          <%# <%= f.label "answer_#{index + 1}_#{answer}", answer, class: 'form-check-label' %> %>
+        <%# <% end %> %> %>
+      <% else %>
+        <% q[:answers].each do |answer| %>
+            <%= f.radio_button "answer_#{index + 1}", answer, id: "answer_#{index + 1}_#{answer}" %>
+            <%= f.label "answer_#{index + 1}_#{answer}", answer, class: 'form-check-label' %>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
-</div>
+  <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+<% end %>

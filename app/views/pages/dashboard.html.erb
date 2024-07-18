@@ -1,3 +1,36 @@
+<<<<<<< HEAD
+<div class="container">
+  <h2>TABLEAU DE BORD</h2>
+  <p>Bonjour <%= current_user.name %></p>
+
+  <div>
+    <i class="fa-regular fa-user"></i>
+    <%= link_to "Informations personnelles", infos_dashboard_path %>
+    <i class="fa-solid fa-caret-right"></i>
+  </div>
+
+  <div>
+    <i class="fa-regular fa-heart"></i>
+    <%= link_to "Mes favoris", favorites_dashboard_path %>
+    <i class="fa-solid fa-caret-right"></i>
+  </div>
+
+  <div>
+    <i class="fa-solid fa-magnifying-glass"></i>
+        <%= link_to "Mes résultats", results_dashboard_path %>
+    <i class="fa-solid fa-caret-right"></i>
+  </div>
+
+  <%# <div class="mesachats">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <p>Mes achats</p>
+    <i class="fa-solid fa-caret-right"></i>
+  </div> %>
+
+  <div>
+    <%= link_to "SE DECONNECTER", destroy_user_session_path %>
+  </div>
+=======
 <div class="dashboard-container">
   <div class="dashboard-header">
     <h1>TABLEAU DE BORD</h1>
@@ -28,4 +61,5 @@
   <div class="dashboard-footer">
     <%= link_to "SE DECONNECTER", destroy_user_session_path, method: :delete, class: "logout-link" %>
   </div>
+>>>>>>> 9e135dc5c6e089955276348d6574c40509d2e747
 </div>

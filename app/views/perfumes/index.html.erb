@@ -70,6 +70,9 @@
               <h5 class="card-title"><%= perfume.name %></h5>
               <p class="card-text"><%= perfume.brand %></p>
               <p class="card-text"><%= number_to_currency(perfume.price, unit: "€") %></p>
+<<<<<<< HEAD
+              <%= link_to "Ajouter à mes favoris",  perfume_favorites_path(perfume), data: {turbo_method: :post} %>
+=======
               <p class="card-text">Avis (<%= perfume.reviews.count %>)</p>
               <div class="rating">
                 <% perfume.reviews.average(:rating).to_i.times do %>
@@ -79,6 +82,7 @@
                   <i class="bi bi-star"></i>
                 <% end %>
               </div>
+>>>>>>> 9e135dc5c6e089955276348d6574c40509d2e747
             </div>
           <% end %>
         </div>

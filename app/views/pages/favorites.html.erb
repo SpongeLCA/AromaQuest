@@ -1,3 +1,28 @@
+<<<<<<< HEAD
+<div class="container">
+  <div class="d-flex">
+    <%= link_to dashboard_path do %>
+      <i class="fa-solid fa-caret-left"></i>
+    <% end %>
+    <h2>MES FAVORIS</h2>
+  </div>
+
+  <div>
+    <% @favorites.each do |favorite| %>
+      <%= link_to perfume_favorite_path(favorite, favorite), data: {turbo_method: :delete, turbo_action:"Supprimé des favoris"} do %>
+        <i class="fa-solid fa-heart"></i>
+      <% end %>
+      <%= image_tag favorite.photo, class: "img-fluid" %>
+      <h3><%= favorite.name %></h3>
+      <p><%= favorite.id %></p>
+      <p><%= favorite.brand %></p>
+      <%= link_to perfume_path(favorite) do %>
+        <i class="fa-solid fa-caret-right"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+=======
  <div class="container mt-5">
     <div class="d-flex align-items-center mb-4">
       <%= link_to dashboard_path do %>
@@ -26,3 +51,4 @@
       <% end %>
     </div>
   </div>
+>>>>>>> 9e135dc5c6e089955276348d6574c40509d2e747
