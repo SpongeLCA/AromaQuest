@@ -16,16 +16,15 @@
           <%= link_to "À PROPOS", apropos_dashboard_path, class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "MON COMPTE", dashboard_path, class: "nav-link" %>
-          </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              PLUS
+            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              MON COMPTE
             </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+              <li><%= link_to "TABLEAU DE BORD", dashboard_path, class: "dropdown-item" %></li>
               <li><%= link_to "FAVORIS", favorites_dashboard_path, class: "dropdown-item" %></li>
               <li><%= link_to "RÉSULTATS", results_dashboard_path, class: "dropdown-item" %></li>
+              <li><%= link_to "MES ACHATS", results_dashboard_path, class: "dropdown-item" %></li>
             </ul>
           </li>
           <li class="nav-item">

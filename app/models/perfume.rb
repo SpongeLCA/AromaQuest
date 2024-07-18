@@ -4,6 +4,7 @@ class Perfume < ApplicationRecord
   has_many :notes, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_one_attached :illustration
 
   validates :name, presence: true
   validates :description, presence: true
