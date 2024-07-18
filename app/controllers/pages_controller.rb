@@ -12,7 +12,6 @@ class PagesController < ApplicationController
     @favorites = current_user.favorite_perfumes
   end
 
-<<<<<<< HEAD
   def infos
     @infos = current_user
   end
@@ -20,15 +19,7 @@ class PagesController < ApplicationController
   def results
     @results = current_user.results
   end
-=======
-  def infosperso
-  end
-
-  def myresults
-    @results = current_user.results
-  end
 
   def apropos
   end
->>>>>>> 9e135dc5c6e089955276348d6574c40509d2e747
 end
