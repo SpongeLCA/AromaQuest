@@ -86,6 +86,7 @@
               <h5 class="card-title"><%= perfume.name %></h5>
               <p class="card-text"><%= perfume.brand %></p>
               <p class="card-text"><%= number_to_currency(perfume.price, unit: "€") %></p>
+              <%= link_to "Ajouter à mes favoris",  perfume_favorites_path(perfume), data: {turbo_method: :post} %>
             </div>
           <% end %>
         </div>

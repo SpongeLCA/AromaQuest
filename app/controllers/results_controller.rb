@@ -30,7 +30,7 @@ class ResultsController < ApplicationController
   private
 
   def result_params
-    params.require(:result).permit(:name, :description, :answer_1, :answer_2, :answer_3, :answer_4, :answer_5, :answer_6, :answer_7, :answer_8, :answer_9, :answer_10)
+    params.require(:result).permit(:name, :description, :answer_1, :answer_2, :answer_3, :answer_4, :answer_5, :answer_6, :answer_7, :answer_8, :answer_9, :answer_10, :budget_min, :budget_max)
   end
 
   def filter_perfumes(result)
@@ -100,15 +100,15 @@ class ResultsController < ApplicationController
         answers: ["Plutôt l'été", "Plutôt l’hiver", "Toute l’année"]
       },
       {
-        question: "Quel est votre budget ?",
-        answers: [0, 300]
+      question: "Quel est votre budget ?",
+      answers: { budget_min: 0, budget_max: 300 }
       },
       {
         question: "Un parfum pour :",
         answers: ["Un week-end intense", "Un déjeuner entre amis", "Un moment cocooning", "Toute occasion"]
       },
       {
-        question: "Un parfum pour :",
+        question: "Un parfum qui sent comme :",
         answers: ["Un jus d’agrumes vitaminé", "Un bouquet de fleurs", "Un fruit frais ou sucré", "Un dessert très gourmand", "Une balade en forêt", "Un bouquet d’herbes et aromates", "Des embruns rafraichissants", "Un souvenir de vacances épicé", "Un cocktail intense et puissant"]
       }
     ]
