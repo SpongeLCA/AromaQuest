@@ -5,34 +5,48 @@ body {
 
 /* Style pour la section héro */
 .hero-section {
-  background-image: url('https://img.freepik.com/vecteurs-libre/fond-encre-aquarelle-alcool_23-2149221556.jpg?w=740&t=st=1721248486~exp=1721249086~hmac=c9a27fee6fd9cac3eb24f6909fc432f18000e82ea480de27a1238e9652a876fc');
+  background-image: url('https://images.unsplash.com/photo-1631663027474-f965d42cbe9b?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-size: cover;
   background-position: center;
   padding: 100px 0;
+  min-height: 500px;
   color: white;
   text-align: center;
+  display: flex;
 }
 
 .hero-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 20px;
+  margin-left: 10px;
+  text-align: left;
+  padding-top: 20px;
+}
+
+.aroma-title {
+  font-size: 1rem;
+  font-family: 'Crimson Text', 'Georgia', 'serif';
+  position: relative;
+  top: -20px;
+  margin-bottom: 30px;
 }
 
 /* Style personnalisé pour le bouton */
-.custom-btn {
+.btn-start {
   background-color: white;
   color: black;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 50px;
-  padding: 10px 30px;
+  padding: 10px 50px;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: normal;
   text-decoration: none;
   transition: all 0.3s ease;
+  margin-top: 40px;
 }
 
-.custom-btn:hover {
+.btn-start:hover {
   background-color: black;
   color: white;
 }
@@ -40,19 +54,31 @@ body {
 /* Conteneur */
 .container {
   max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h2 {
-  color: #5a5a5a;
+  color: #664D38;
   margin-bottom: 40px;
   font-weight: bold;
 }
 
+.h3-step {
+  font-family: 'Crimson Text', 'Georgia', 'serif';
+}
+
+.step-container {
+  padding: 0 20px;
+}
+
 .step-card {
-  background-color: #fafaf6;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  padding: 40px;
 }
 
 .step-card h3 {
@@ -62,12 +88,6 @@ h2 {
 }
 
 .step-card p {
-  color: #666;
+  color: #000000;
   font-size: 1rem;
-}
-
-.step-card img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 20px;
 }
