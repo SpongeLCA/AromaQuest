@@ -23,8 +23,6 @@ class PerfumesController < ApplicationController
       @perfumes = @perfumes.order(price: :asc)
     when 'price_desc'
       @perfumes = @perfumes.order(price: :desc)
-    else
-      @perfumes = @perfumes.order(created_at: :desc)
     end
   end
 

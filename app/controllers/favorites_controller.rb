@@ -1,7 +1,9 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
-
+  def index
+    @favorites = current_user.favorites.includes(:perfume)
+  end
 
   def create
     @favorite = Favorite.new(perfume_id: params[:perfume_id])
@@ -15,9 +17,8 @@ class FavoritesController < ApplicationController
 
   def destroy
     @favorite = Favorite.find(params[:id])
-    @perfume = @favorite.perfume_id
     @favorite.destroy
-    if @favorite
+    if @favorite.destroyed?
       redirect_to favorites_dashboard_path, notice: 'Supprimé des favoris'
     else
       redirect_to favorites_dashboard_path, alert: 'Favori introuvable'

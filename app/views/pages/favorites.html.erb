@@ -6,19 +6,33 @@
     <h2>MES FAVORIS</h2>
   </div>
 
-  <div>
-    <% @favorites.each do |favorite| %>
-      <%= link_to perfume_favorite_path(favorite, favorite), data: {turbo_method: :delete, turbo_action:"Supprimé des favoris"} do %>
-        <i class="fa-solid fa-heart"></i>
-      <% end %>
-      <%= image_tag favorite.photo, class: "img-fluid" %>
-      <h3><%= favorite.name %></h3>
-      <p><%= favorite.id %></p>
-      <p><%= favorite.brand %></p>
-      <p><%= number_to_currency(favorite.price, unit: "€") %></p>
-      <%= link_to perfume_path(favorite) do %>
-        <i class="fa-solid fa-caret-right"></i>
-      <% end %>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <% @favorites.each do |perfume| %>
+      <div class="col">
+        <div class="card h-100">
+          <%= link_to perfume_path(perfume), class: "text-decoration-none text-dark" do %>
+            <div class="position-relative">
+              <img src="<%= perfume.photo %>" class="card-img-top" alt="<%= perfume.name %>">
+              <button class="btn btn-link position-absolute top-0 end-0"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= perfume.name %></h5>
+              <p class="card-text"><%= perfume.brand %></p>
+              <p class="card-text"><%= number_to_currency(perfume.price, unit: "€") %></p>
+              <%= link_to "Ajouter à mes favoris",  perfume_favorites_path(perfume), data: {turbo_method: :post} %>
+              <p class="card-text">Avis (<%= perfume.reviews.count %>)</p>
+              <div class="rating">
+                <% perfume.reviews.average(:rating).to_i.times do %>
+                  <i class="bi bi-star-fill"></i>
+                <% end %>
+                <% (5 - perfume.reviews.average(:rating).to_i).times do %>
+                  <i class="bi bi-star"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

@@ -11,7 +11,13 @@
         <% else %>
           <p>Photo du parfum</p>
         <% end %>
-        <button class="btn btn-link position-absolute top-0 end-0"><i class="fa-regular fa-heart"></i></button>
+        <% if current_user.favorites.exists?(perfume: @perfume) %>
+          <button class="btn btn-link position-absolute top-0 end-0"><i class="fa-solid fa-heart"></i></button>
+        <% else %>
+          <%= link_to perfume_favorites_path(@perfume), method: :post, class: "btn btn-link position-absolute top-0 end-0" do %>
+            <i class="fa-regular fa-heart"></i>
+          <% end %>
+        <% end %>
         <button class="btn btn-link position-absolute bottom-0 end-0"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
       </div>
       <p class="mt-2"><strong>Favori</strong></p>
