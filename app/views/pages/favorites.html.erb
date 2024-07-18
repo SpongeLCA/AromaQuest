@@ -15,7 +15,7 @@
       <h3><%= favorite.name %></h3>
       <p><%= favorite.id %></p>
       <p><%= favorite.brand %></p>
-      <p><%= number_to_currency(perfume.price, unit: "€") %></p>
+      <p><%= number_to_currency(favorite.price, unit: "€") %></p>
       <%= link_to perfume_path(favorite) do %>
         <i class="fa-solid fa-caret-right"></i>
       <% end %>
