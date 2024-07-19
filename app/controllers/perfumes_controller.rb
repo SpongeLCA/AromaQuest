@@ -6,16 +6,16 @@ class PerfumesController < ApplicationController
       @perfumes = @perfumes.where(intensity: params[:intensity])
     end
 
-    if params[:heart_notes].present?
-      @perfumes = @perfumes.joins(:notes).where(notes: { coeur: params[:heart_notes] })
+    if params[:heart_note].present?
+      @perfumes = @perfumes.joins(:notes).where("notes.coeur ILIKE ?", "%#{params[:heart_note]}%")
     end
 
-    if params[:head_notes].present?
-      @perfumes = @perfumes.joins(:notes).where(notes: { tete: params[:head_notes] })
+    if params[:head_note].present?
+      @perfumes = @perfumes.joins(:notes).where("notes.tete ILIKE ?", "%#{params[:head_note]}%")
     end
 
-    if params[:base_notes].present?
-      @perfumes = @perfumes.joins(:notes).where(notes: { fond: params[:base_notes] })
+    if params[:base_note].present?
+      @perfumes = @perfumes.joins(:notes).where("notes.fond ILIKE ?", "%#{params[:base_note]}%")
     end
 
     case params[:sort]
@@ -24,6 +24,10 @@ class PerfumesController < ApplicationController
     when 'price_desc'
       @perfumes = @perfumes.order(price: :desc)
     end
+
+    @head_notes = Note.distinct.pluck(:tete).map { |n| n.split(', ') }.flatten.uniq
+    @heart_notes = Note.distinct.pluck(:coeur).map { |n| n.split(', ') }.flatten.uniq
+    @base_notes = Note.distinct.pluck(:fond).map { |n| n.split(', ') }.flatten.uniq
   end
 
   def show

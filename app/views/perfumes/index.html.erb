@@ -22,16 +22,16 @@
           <%= form.select :intensity, options_for_select([['Sélectionner', ''], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]], params[:intensity]), { include_blank: true }, { class: 'form-select' } %>
         </div>
         <div class="mb-3">
-          <label for="heart_notes" class="form-label">NOTES DE COEUR</label>
-          <%= form.select :heart_notes, options_for_select([['Sélectionner', ''], 'Bergamote', 'Lavande', 'Mandarine', 'Amande']), { include_blank: true }, { class: 'form-select' } %>
+          <label for="heart_note" class="form-label">NOTES DE COEUR</label>
+          <%= form.select :heart_note, options_for_select([['Sélectionner', '']] + @heart_notes, params[:heart_note]), { include_blank: true }, { class: 'form-select' } %>
         </div>
         <div class="mb-3">
-          <label for="head_notes" class="form-label">NOTES DE TÊTE</label>
-          <%= form.select :head_notes, options_for_select([['Sélectionner', ''], 'Iris', 'Jasmin Sambac', 'Basilic', 'Cuir']), { include_blank: true }, { class: 'form-select' } %>
+          <label for="head_note" class="form-label">NOTES DE TÊTE</label>
+          <%= form.select :head_note, options_for_select([['Sélectionner', '']] + @head_notes, params[:head_note]), { include_blank: true }, { class: 'form-select' } %>
         </div>
         <div class="mb-3">
-          <label for="base_notes" class="form-label">NOTES DE FOND</label>
-          <%= form.select :base_notes, options_for_select([['Sélectionner', ''], 'Vanille', 'Bois de santal', 'Thé vert', 'Vanille']), { include_blank: true }, { class: 'form-select' } %>
+          <label for="base_note" class="form-label">NOTES DE FOND</label>
+          <%= form.select :base_note, options_for_select([['Sélectionner', '']] + @base_notes, params[:base_note]), { include_blank: true }, { class: 'form-select' } %>
         </div>
         <div class="mb-3">
           <label for="sort" class="form-label">TRIER PAR</label>

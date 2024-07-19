@@ -10,8 +10,7 @@ puts "Creating users..."
 users = User.create!([
   { name: 'Alice', surname: 'Dupont', address: '12 Rue de la Paix, Paris', email: 'alice.dupont@example.com', password: 'password', lat: 48.868, long: 2.328 },
   { name: 'Solène', surname: 'baudic', address: '34 Avenue des Champs-Élysées, Paris', email: 'solene.baudic@gmail.com', password: '123456', lat: 48.869, long: 2.307 },
-  { name: 'Bob', surname: 'Martin', address: '34 Avenue des Champs-Élysées, Paris', email: 'bob.martin@example.com', password: 'password', lat: 48.869, long: 2.307 }
-  { name: 'Loic', surname: 'Carpentier', address: '34 Avenue des Champs-Élysées, Paris', email: 'carpentier.loic19@gmail.com', password: 'password', lat: 48.869, long: 2.307 }
+  { name: 'Loic', surname: 'Carpentier', address: '34 Avenue des Champs-Élysées, Paris', email: 'carpentier.loic19@gmail.com', password: '123456', lat: 48.869, long: 2.307 }
 ])
 puts "finished creating users"
 puts "Creating perfumes..."
