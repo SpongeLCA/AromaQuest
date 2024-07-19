@@ -9,7 +9,7 @@
       <div class="perfume-image-card">
         <div class="position-relative">
           <% if @perfume.photo.present? %>
-            <%= cl_image_tag perfume.illustration.key, alt: @perfume.name, class: "img-fluid" %>
+            <%= cl_image_tag @perfume.illustration.key, alt: @perfume.name, class: "img-fluid" %>
           <% else %>
             <p>Photo du parfum</p>
           <% end %>
