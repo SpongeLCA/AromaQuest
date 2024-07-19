@@ -77,6 +77,7 @@
                   <span>350 €</span> <!-- Valeur maximum -->
                 </div>
               </div>
+              <%= form.hidden_field :price, id: 'priceField', data: { form_target: 'price' } %>
             </div>
           <%= form.submit 'Valider', class:"submit-button", data: { action: "form#selectAnswer" } %>
         </div>
