@@ -1,71 +1,74 @@
-.dashboard-container {
+.container.dashboard {
   background-color: #f3f2ed;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   padding: 20px;
+  border-radius: 10px;
 }
 
-.dashboard-header {
-  text-align: center;
+.dashboard h2 {
+  $headers-font: "Archivo", "Helvetica", "sans-serif";
+  color: #463526;
+  font-size: 1.5em;
+  font-weight: bold;
   margin-bottom: 20px;
 }
 
-.dashboard-header h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #000;
+.dashboard p {
+  $body-font: "Crimson Text", "Georgia", "serif";
+  margin-bottom: 30px;
+  font-size: 1.2em;
 }
 
-.dashboard-header p {
-  font-size: 1rem;
-  color: #000;
-}
-
-.dashboard-menu {
-  width: 100%;
-  max-width: 400px;
-}
-
-.dashboard-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px;
+.dashboard-cards .card {
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-cards .card-body {
+  padding: 15px 20px;
+}
+
+.dashboard-cards .card-body i.icon-large {
+  font-size: 2em; /* Augmenter la taille des icônes */
+  color: #000;
+}
+
+.dashboard-cards .card-body a {
+  flex-grow: 1;
+  text-align: left;
+  padding-left: 15px;
   text-decoration: none;
   color: #000;
-  margin-bottom: 10px;
+  font-weight: bold;
+  position: relative;
 }
 
-.dashboard-item i:first-child {
-  margin-right: 10px;
+.dashboard-cards .card-body .fa-caret-right {
+  font-size: 1.2em;
 }
 
-.dashboard-item span {
-  flex: 1;
-  text-align: left;
-}
-
-.dashboard-footer {
-  margin-top: 20px;
-}
-
-.logout-link {
-  display: block;
-  background-color: #8c8c8c;
-  color: white;
-  text-align: center;
+.logout-button .btn-logout {
+  background-color: #8d8d7f;
+  color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
+  display: inline-block;
+  border: none;
 }
 
-.logout-link:hover {
-  background-color: #666;
+/* Styles spécifiques pour les écrans mobiles */
+@media (max-width: 576px) {
+  .logout-button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logout-button .btn-logout {
+    width: 100%;
+    max-width: 300px; /* Vous pouvez ajuster cette valeur selon vos besoins */
+  }
 }
