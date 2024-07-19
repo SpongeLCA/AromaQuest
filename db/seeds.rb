@@ -97,7 +97,7 @@ perfumes.each_with_index do |perfume, index|
               end
   if file_path
     file = File.open(file_path, "rb")
-    puts "Ont attache l'image"
+    puts "On attache l'image"
     perfume.illustration.attach(io: file, filename: "#{perfume.name}#{File.extname(file_path)}", content_type: "image/#{File.extname(file_path).delete('.')}")
     perfume.save!
     file.close # Assurez-vous de fermer le fichier après utilisation
@@ -113,7 +113,7 @@ results = Result.create!([
   { user: users.last, name: 'Resultat 3', description: 'Troisième résultat', answer_1: 'A vous même', answer_2: 'Mixte', answer_3: 'Ne passe pas inaperçu', answer_4: 'Tout le temps', answer_5: 'Plutôt l’hiver', answer_6: 'Réponse 6', answer_7: 'Un week-end intense', answer_8: 'Un fruit frais ou sucré,Un bouquet d’herbes et aromates', answer_9: 'Reponse 9', answer_10: 'Réponse 10' }
 ])
 puts "finished creating results"
-puts "creatting perfume results..."
+puts "creating perfume results..."
 PerfumeResult.create!([
   { perfume: perfumes[0], result: results[0] },
   { perfume: perfumes[1], result: results[1] }
