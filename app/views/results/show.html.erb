@@ -1,4 +1,3 @@
-<!-- app/views/results/show.html.erb -->
 <div class="results-container">
   <h1 class="title-results">VOS RESULTATS</h1>
   <p class="results-description">Voici une sélection de parfums qui correspondent parfaitement à vos goûts et préférences olfactives. Selon vos réponses, vous découvrirez des fragrances avec des notes de tête fraîches et fruitées, des notes de cœur florales et élégantes, ainsi que des notes de fond chaleureuses et boisées. Explorez ces créations uniques qui reflètent votre personnalité !</p>
@@ -8,17 +7,24 @@
   <ul class="perfume-list">
     <% @perfumes.each do |perfume| %>
       <li class="perfume-item">
-        <div class="card">
+        <div class="card h-100">
           <%= link_to perfume_path(perfume), class: "text-decoration-none text-dark" do %>
             <div class="position-relative">
               <img src="<%= perfume.photo %>" class="card-img-top" alt="<%= perfume.name %>">
-              <button class="btn btn-link position-absolute top-0 end-0"><i class="bi bi-heart"></i></button>
+              <% if current_user.favorites.exists?(perfume: perfume) %>
+                <%= link_to perfume_favorite_path(perfume, current_user.favorites.find_by(perfume: perfume)), method: :delete, class: "position-absolute top-0 end-0 btn btn-link" do %>
+                  <i class="fa-solid fa-heart fa-2x"></i>
+                <% end %>
+              <% else %>
+                <%= link_to perfume_favorites_path(perfume_id: perfume.id), method: :post, class: "position-absolute top-0 end-0 btn btn-link" do %>
+                  <i class="fa-regular fa-heart fa-2x"></i>
+                <% end %>
+              <% end %>
             </div>
             <div class="card-body">
               <h5 class="card-title"><%= perfume.name %></h5>
-              <p class="card-text"><%= perfume.brand %></p>
-              <p class="card-text"><%= number_to_currency(perfume.price, unit: "€") %></p>
-              <%= link_to "Ajouter à mes favoris", perfume_favorites_path(perfume), data: { turbo_method: :post } %>
+              <p class="card-text"><strong><%= perfume.brand %></strong></p>
+              <p class="card-text-price"><%= number_to_currency(perfume.price, unit: "€") %></p>
               <p class="card-text">Avis (<%= perfume.reviews.count %>)</p>
               <div class="rating">
                 <% average_rating = perfume.reviews.average(:rating).to_f.round(1) %>
