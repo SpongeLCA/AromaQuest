@@ -113,6 +113,7 @@ results = Result.create!([
   { user: users.last, name: 'Resultat 2', description: 'Deuxième résultat', answer_1: 'A vous même', answer_2: 'Pour homme', answer_3: 'Est plutôt intime, juste pour vous', answer_4: 'Tout le temps', answer_5: 'Plutôt l’été', answer_6: 'Réponse 6', answer_7: 'Toute occasion', answer_8: 'Un jus d’agrumes vitaminé,Un bouquet d’herbes et aromates', answer_9: 'Un jus d’agrumes vitaminé, Un bouquet d’herbes et aromates', answer_10: 'Réponse 10' },
   { user: users.last, name: 'Resultat 3', description: 'Troisième résultat', answer_1: 'A vous même', answer_2: 'Mixte', answer_3: 'Ne passe pas inaperçu', answer_4: 'Tout le temps', answer_5: 'Plutôt l’hiver', answer_6: 'Réponse 6', answer_7: 'Un week-end intense', answer_8: 'Un fruit frais ou sucré,Un bouquet d’herbes et aromates', answer_9: 'Reponse 9', answer_10: 'Réponse 10' }
 ])
+
 puts "finished creating results"
 puts "creating perfume results..."
 PerfumeResult.create!([
@@ -121,12 +122,85 @@ PerfumeResult.create!([
 ])
 puts "finished creating perfume results"
 puts "creating notes..."
-notes = Note.create!([
-  { perfume: perfumes[0], tete: 'Bergamote', coeur: 'Iris', fond: 'Vanille' },
-  { perfume: perfumes[1], tete: 'Lavande', coeur: 'Jasmin Sambac', fond: 'Bois de santal' },
-  { perfume: perfumes[2], tete: 'Mandarine', coeur: 'Basilic', fond: 'Thé vert' },
-  { perfume: perfumes[3], tete: 'Amande', coeur: 'Cuir', fond: 'Vanille' }
-])
+# notes = Note.create!([
+#   { perfume: perfumes[0], tete: 'Bergamote', coeur: 'Iris', fond: 'Vanille' },
+#   { perfume: perfumes[1], tete: 'Lavande', coeur: 'Jasmin Sambac', fond: 'Bois de santal' },
+#   { perfume: perfumes[2], tete: 'Mandarine', coeur: 'Basilic', fond: 'Thé vert' },
+#   { perfume: perfumes[3], tete: 'Amande', coeur: 'Cuir', fond: 'Vanille' }
+# ])
+notes_data = [
+  {tete: 'Menthe, Bergamote', coeur: 'Romarin, Cardamome, Coriandre, Cerise, Amande', fond: 'Patchouli, Vanille, Fève de tonka, Réglisse' },
+  {tete: 'Bergamote, Amande, Baie rose', coeur: 'Héliotrope, Cannelle, Prune', fond: 'Cuir, Tabac, Patchouli, Cèdre' },
+  {tete: 'Piment', coeur: 'Fève de tonka', fond: 'Encens' },
+  {tete: 'Lavande, Romarin, Bergamote, Thym', coeur: 'Cerise', fond: 'Vanille, Bois de santal, Cuir, Fève de tonka, Amande' },
+  {tete: 'Bergamote, Citron, Orange, Néroli', coeur: 'Patchouli, Jasmin, Lavande', fond: 'Bois de santal, Mousse de chêne' },
+  {tete: 'Orange, Verveine, Bergamote', coeur: 'Néroli, Citron, Orange', fond: 'Romarin, Cèdre, Fève de tonka' },
+  {tete: 'Orange', coeur: 'Fleur d’oranger, Menthe', fond: 'Romarin, Lavande' },
+  {tete: 'Encens', coeur: 'Citron', fond: 'Ambre gris' },
+  {tete: 'Figue, Poivre noir, Poivre rose', coeur: 'Cèdre, Rose, Patchouli', fond: 'Musc, Cuir' },
+  {tete: 'Osmanthus, Ylang-Ylang', coeur: 'Cuir, Musc', fond: 'Cèdre, Santal, Tabac' },
+  {tete: 'Lavande, Néroli, Orange, Citron', coeur: 'Rose, Jasmin', fond: 'Cannelle, Patchouli, Vanille, Bouleau, Girofle, Fève de tonka, Cèdre, Ambre gris' },
+  {tete: 'Bergamote, Tabac, Citron, Noix de muscade, Néroli, Mandarine', coeur: 'Vetiver, Poivre noir, Sauge, Bois de santal', fond: 'Vetiver, Mousse de chêne, Cuir, Myrrhe, Civette, Ambre, Fève de tonka' },
+  {tete: 'Badiane de chine, Bergamote, Citron, Poivre noir', coeur: 'Cacao, Bois de santal, Encens, The, Jasmin', fond: 'Patchouli' },
+  {tete: 'Bergamote ', coeur: 'Rose, Prune, Framboise', fond: 'Cannelle, Patchouli, Vanille, Santal, Cuir, Oud, Caramel' },
+  {tete: 'Cardamome, Angelique, Poivre rose', coeur: 'Poivre noir, Cafe', fond: 'Bois de santal, Oud, Patchouli' },
+  {tete: 'Cacao, Rose', coeur: 'Rhum, Epices', fond: 'The lapsang souchong' },
+  {tete: 'Citron', coeur: 'Cuir, Praline', fond: 'Oud' },
+  {tete: 'Amande, Oud', coeur: 'Framboise, Cèdre d’atlas', fond: 'Bois de santal, Vanille' },
+  {tete: 'Cerise', coeur: 'Rose de Turquie, Rose de Bulgarie', fond: 'Oud, Cuir' },
+  {tete: 'Poivre rose, Orange, Bergamote', coeur: 'Petit-grain, Menthe', fond: 'Musc, Fève de tonka' },
+  {tete: 'Bergamote', coeur: 'Gingembre, Cardamome', fond: 'Petit-grain' },
+  {tete: 'Violette, Melon, Fleurs sauvages', coeur: 'Jasmin, Fleur d’oranger', fond: 'Violette, Musc blanc, Iris' },
+  {tete: 'Bergamote', coeur: 'Fleur de cerisier, Poire, Rose', fond: 'Violette, Musc' },
+  {tete: 'Fleur d’oranger, Bergamote', coeur: 'Rose, Magnolia, Jasmin', fond: 'Miel' },
+  {tete: 'Bergamote, Feuille de figuier, Petit-grain', coeur: 'Néroli, Figue, Rose', fond: 'Vetiver, Cèdre, Fève de tonka' },
+  {tete: 'Peche, Bourgeon de cassis, Poivre noir, Amande', coeur: 'Rose de Bulgarie, Rose de Damas', fond: 'Benjoin, Patchouli, Bois de santal' },
+  {tete: 'Mandarine, Basilic, Bourgeon de cassis', coeur: 'Fleur d’oranger, Miel, Anis, Rose de Bulgarie', fond: 'Vanille, Bois de santal' },
+  {tete: 'Menthe, Citron', coeur: 'Muguet, Cyclamen, The', fond: 'Fleur d’oranger' },
+  {tete: 'Pamplemousse, Bergamote, Citron', coeur: 'Osmanthus, Hedione, Poire', fond: 'Musc Blanc, Cèdre, Mousse de chêne' },
+  {tete: 'Pamplemousse, Bergamote, Citron, Petit-grain', coeur: 'Néroli, Cassis', fond: 'Patchouli, Vanille' },
+  {tete: 'Bergamote, Mandarine, Poire', coeur: 'Néroli, Jasmin, Lavande', fond: 'Iris, Vanille, Bois de santal' },
+  {tete: 'Bergamote, Citron', coeur: 'Rose, Jasmin', fond: 'Patchouli, Vanille, Iris, Fève de tonka' },
+  {tete: 'Mandarine, Bergamote, Citron', coeur: 'Citron, Fleur d’oranger, Jasmin', fond: 'Vanille, Musc blanc' },
+  {tete: 'Mandarine, Bergamote, Citron', coeur: 'Rose, Peche, Néroli, Jasmin', fond: 'Mousse de chêne, Vetiver, Patchouli, Vanille, Girofle' },
+  {tete: 'Bergamote, Violette, Citron', coeur: 'Iris, Cassis, Narcisse, Muguet', fond: 'Vetiver, Patchouli, Civette, Cèdre' },
+  {tete: 'Muguet, Pivoine, Freesia, Lys blanc', coeur: 'Rose de Bulgarie, Jasmin', fond: 'Musc blanc, Patchouli' },
+  {tete: 'Mimosa, Rose', coeur: 'Mimosa, Buddleia, Bourgeon de cassis', fond: 'Amande, Vanille, Hibiscus' },
+  {tete: 'Framboise', coeur: 'Rose, Fleur d’oranger, Violette', fond: 'Vanille, Iris, Fève de tonka' },
+  {tete: 'Citron', coeur: 'Rose, Jasmin', fond: 'Vanille, Iris' },
+  {tete: 'Orange, Bergamote, Jasmin', coeur: 'Iris, Rose de Turquie', fond: 'Vanille, Caramel, Fève de tonka, Amande, Patchouli' },
+  {tete: 'Lavande, Romarin, Bergamote', coeur: 'Rose, Jasmin, Bois de rose', fond: 'Coumarine, Civette, Fève de tonka, Vanille' },
+  {tete: 'Mandarine, Bergamote', coeur: 'Rose, Peche', fond: 'Benjoin, Vetiver, Vanille, Santal, Iris, Fève de tonka' },
+  {tete: 'Baie rose, Safran, Geranium', coeur: 'Rose, Musc', fond: 'Ciste, Cèdre, Ambre' },
+  {tete: 'Safran, Oud', coeur: 'Rose, Cèdre', fond: 'Bois de gaiac, Cuir, Encens' },
+  {tete: 'Musc blanc, Néroli, Ambrette', coeur: 'Iris, Fleur d’oranger, Rose de Bulgarie', fond: 'Lait, Bois de santal, Ambre blanche' },
+  {tete: 'Mandarine', coeur: 'Patchouli, Immortelle', fond: 'Vanille, Héliotrope, Daim, Ambre' },
+  {tete: 'Cardamome, Cafe, Bergamote', coeur: 'Iris, Ambrette', fond: 'Cuir, The, Vanille, Ambre' },
+  {tete: 'Baie rose, Bergamote, Encens', coeur: 'Rose, Jasmin, Ylang-Ylang', fond: 'Vanille, Benjoin, Rhum' },
+  {tete: 'Angelique, Poire, Poivre rose', coeur: 'Jasmin, Carvi', fond: 'Vanille, Angelique, Cèdre' },
+  {tete: 'Rose', coeur: 'Rose', fond: 'Peche, Patchouli' },
+  {tete: 'Myrtille, Bergamote, Framboise', coeur: 'Rose, Fleur d’oranger', fond: 'Vanille, Musc blanc, Patchouli, Bois de santal' },
+  {tete: 'Cerise, Amande, Bergamote', coeur: 'Rose, The, Iris', fond: 'Cuir, Patchouli, Fève de tonka' },
+  {tete: 'Bois de santal, Cardamome', coeur: 'Figue', fond: 'Oud, Myrrhe' },
+  {tete: 'Encens,Iris, Poivre rose', coeur: 'Benjoin, Bois de gaiac, Coriandre', fond: 'Copaiba, Patchouli, Musc blanc' },
+  {tete: 'Néroli, Rose, Peche', coeur: 'Gardenia, Violette, Ylang-Ylang', fond: 'Musc, Fève de tonka, Bois de santal, Vanille' },
+  {tete: 'Petit-grain, Bergamote', coeur: 'Fleur d’oranger,Néroli, The', fond: 'Ambrette, Mousse d’arbre, Myrrhe' },
+  {tete: 'Herbe', coeur: 'Tubereuse, Lys, Jasmin', fond: 'Vanille, Bois de santal, Vetiver' },
+  {tete: 'Rose, Rose de Bulgarie', coeur: 'Violette, Héliotrope', fond: 'Musc, Fève de tonka, Bois de santal, Vanille' },
+  {tete: 'Coriandre, Armoise, Citron, Bergamote', coeur: 'Clou de girofle, Cardamome, Sauge, Rose de Bulgarie', fond: 'Bois de santal, Patchouli, Benjoin, Ciste' },
+  {tete: 'Verveine, Citron, Bergamote', coeur: 'Petit-grain, Lavande, Cedrat, Sauge, Néroli', fond: 'Vetiver, Ambre gris, Fève de tonka' },
+  {tete: 'Poire, Bergamote, Mandarine', coeur: 'Lavande, Pivoine, Jasmin sambac', fond: 'Vanille, Musc blanc, Bois de santal' },
+  {tete: 'Fleur de tiare, Noix de coco, Bergamote', coeur: 'Jasmin, Ylang-Ylang, Fleur d’oranger', fond: 'Vanille, Musc' }
+]
+puts "Ajout des notes"
+notes_data.each_with_index do |note_data, index|
+  Note.create!(
+    perfume: perfumes[index],
+    tete: note_data[:tete],
+    coeur: note_data[:coeur],
+    fond: note_data[:fond]
+  )
+end
 puts "finished creating notes"
 puts "creating reviews..."
 reviews = Review.create!([

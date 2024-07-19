@@ -1,11 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["step", "answer", "form"]
+  static targets = ["step", "answer", "form", "price"]
 
   connect() {
     this.showCurrentStep();
     this.updateProgressBar();
+    this.initializeSlider();
   }
 
   selectAnswer(event) {
@@ -19,6 +20,7 @@ export default class extends Controller {
       this.updateProgressBar();
     } else {
       // Affiche les valeurs des champs cachés avant la soumission du formulaire
+      this.updatePriceField();
       this.formTarget.submit();
       // console.log("Champs cachés avant soumission :");
       // Array.from(this.formTarget.elements).forEach((element) => {
@@ -67,5 +69,22 @@ export default class extends Controller {
     const totalSteps = this.stepTargets.length;
     const progressPercent = (currentStep / (totalSteps - 1)) * 100;
     document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+  }
+
+  initializeSlider() {
+    const slider = document.querySelector('#myRange');
+    if (slider) {
+      slider.addEventListener('input', () => {
+        this.updatePriceField();
+      });
+    }
+  }
+
+  updatePriceField() {
+    const slider = document.querySelector('#myRange');
+    const priceField = this.priceTarget;
+    if (slider && priceField) {
+      priceField.value = slider.value;
+    }
   }
 }
