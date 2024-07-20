@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:dashboard]
+  before_action :set_locale, only: [:results]
 
   def home
   end
@@ -20,6 +21,13 @@ class PagesController < ApplicationController
     @results = current_user.results
   end
 
+
   def apropos
+  end
+
+  private
+
+  def set_locale
+    I18n.locale = :fr
   end
 end
