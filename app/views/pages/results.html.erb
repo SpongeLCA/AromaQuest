@@ -1,40 +1,39 @@
-<div class="container">
-
-  <div class="d-flex">
-    <%= link_to dashboard_path do %>
-      <i class="fa-solid fa-caret-left"></i>
-    <% end %>
-    <h2>MES RESULTATS</h2>
+<div class="results-container">
+  <div class="back-orga">
+    <div class="back-icon">
+      <%= link_to dashboard_path do %>
+        <i class="fa-solid fa-chevron-left"></i>
+      <% end %>
+    </div>
+    <h2 class="title-result">MES RESULTATS</h2>
   </div>
-
   <p>Retrouvez les listes de parfums générées via les questionnaires effectués.</p>
 
-  <div>
-    <p>TOUS MES RESULTATS</p>
-    <i class="fa-solid fa-caret-down"></i>
-  </div>
-  <div>
-    <% @results.each do |result| %>
-      <%= link_to result_path(result) do %>
-        <p>Vos résultats du <%= result.created_at %></p>
-      <% end %>
-    <% end %>
-  </div>
+  <div class="resultats-section">
+      <p data-bs-toggle="collapse" href="#resultats" role="button" aria-expanded="false" aria-controls="resultats" class="btn-resultats">
+        TOUS MES RESULTATS <i class="fa-solid fa-chevron-down"></i>
+      </p>
+      <div class="collapse" id="resultats">
+        <div class="collapse-result">
+          <% if @results.any? %>
+            <% @results.each do |result| %>
+              <ul>
+                <%= link_to result_path(result) do %>
+                  <li>VOS RESULTATS DU <%= formatted_date(result.created_at).upcase %></li>
+                <% end %>
+                  <hr>
+              </ul>
+            <% end %>
+          <% else %>
+            <p>Aucune résultat disponible pour le moment.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
 
- <h2>CES PARFUMS QUI VOUS CORRESPONDENT...</h2>
+  <h2 class="title-result text-center">CES PARFUMS QUI VOUS CORRESPONDENT...</h2>
 
- <P>Ces parfums ont été plusieurs fois proposés à la suite de vos questionnaires :</P>
-
-
-  <div class="parfums">
-
-    <div class="img">Photo du parfum</div>
-    <i class="fa-solid fa-heart"></i>
-    <h2>Nom du parfum</h2>
-    <h3>Brand</h3>
-    <i class="fa-solid fa-caret-right"></i>
-
-  </div>
+  <P>Ces parfums ont été plusieurs fois proposés à la suite de vos questionnaires :</P>
 
 </div>
