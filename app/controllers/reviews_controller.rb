@@ -2,11 +2,15 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @review = current_user.Review.build(review_params)
+    @perfume = Perfume.find(params[:perfume_id])
+    @review = Review.new(review_params)
+    @review.perfume = @perfume
+    @review.user_id = current_user.id
+
     if @review.save
-      redirect_to perfume_path(@review.perfume), notice: 'avis ajoute avec succes'
+      redirect_to perfume_path(@review.perfume), notice: 'Avis ajouté avec succes'
     else
-      redirect_to perfume_path(@review.perfume), alert: 'impossible de mettre un avis'
+      redirect_to perfume_path(@review.perfume), alert: 'Impossible de mettre un avis'
     end
   end
 
