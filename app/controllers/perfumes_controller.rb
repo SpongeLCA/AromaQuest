@@ -33,7 +33,8 @@ class PerfumesController < ApplicationController
   def show
     @perfume = Perfume.find(params[:id])
     @review = Review.new
-    @magasins = Magasin.near(current_user.address, 10)
+    address = current_user.address
+    @magasins = Magasin.near(address, 10)
     @markers = @magasins.geocoded.map do |magasin|
       {
         lat: magasin.latitude,
