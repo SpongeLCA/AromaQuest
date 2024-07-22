@@ -1,11 +1,15 @@
-/* Couleur de fond pour la page */
+
 body {
   background-color: #f3f2ed;
 }
 
-/* Style pour la section héro */
+
 .hero-section {
-  background-image: url('https://images.unsplash.com/photo-1631663027474-f965d42cbe9b?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.2), /* Couleur et opacité du dégradé */
+      rgba(0, 0, 0, 0.2)  /* Couleur et opacité du dégradé */
+    ),
+  url('https://images.unsplash.com/photo-1631663027474-f965d42cbe9b?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-size: cover;
   background-position: center;
   padding: 100px 0;
@@ -32,7 +36,6 @@ body {
   margin-bottom: 30px;
 }
 
-/* Style personnalisé pour le bouton */
 .btn-start {
   background-color: white;
   color: black;
