@@ -9,8 +9,9 @@ Magasin.destroy_all
 puts "Creating users..."
 users = User.create!([
   { name: 'Alice', surname: 'Dupont', address: '12 Rue de la Paix, Paris', email: 'alice.dupont@example.com', password: 'password', lat: 48.868, long: 2.328 },
-  { name: 'Solène', surname: 'baudic', address: '34 Avenue des Champs-Élysées, Paris', email: 'solene.baudic@gmail.com', password: '123456', lat: 48.869, long: 2.307 },
-  { name: 'Loic', surname: 'Carpentier', address: '34 Avenue des Champs-Élysées, Paris', email: 'carpentier.loic19@gmail.com', password: '123456', lat: 48.869, long: 2.307 }
+  { name: 'Solène', surname: 'Baudic', address: '34 Avenue des Champs-Élysées, Paris', email: 'solene.baudic@gmail.com', password: '123456', lat: 48.869, long: 2.307 },
+  { name: 'Loic', surname: 'Carpentier', address: '34 Avenue des Champs-Élysées, Paris', email: 'carpentier.loic19@gmail.com', password: '123456', lat: 48.869, long: 2.307 },
+  { name: 'Jenna-Claudia', surname: 'Andria', address: 'Pantin', email: 'jennaandria@gmail.com', password: '123456', lat: 48.894, long: 2.412 }
 ])
 puts "finished creating users"
 puts "Creating perfumes..."
@@ -24,7 +25,7 @@ perfumes = Perfume.create!([
   {name: 'L’homme ideal L’intense', description: 'L’intensité est le point d’orgue de cette nouvelle interprétation de l’Homme Idéal. Dès la tête, le piment embrase de sa facette d’épices chaudes, une fève Tonka vive et envoûtante. En fond, les notes fumées associées à la mythique teinture de vanille viennent signer une fragrance résolument intrigante.', brand: 'Guerlain', price: 125, photo: 'https://www.guerlain.com/dw/image/v2/BDCZ_PRD/on/demandware.static/-/Sites-GSA_master_catalog/default/dw7a39c039/primary_packshot_3/2023/Fragrances/MASCULINS/L_HOMME_IDEAL_INTENSE_EDP_100ml-226615.png', intensity: 2, genre: 'Pour homme', period: 'Soirée', season: 'Plutôt l’hiver', situations: 'Un déjeuner entre amis', smell: 'Un cocktail intense et puissant'},
   {name: 'L’homme ideal Eau de Parfum', description: 'Une amande captivante, la séduction d’une teinture de vanille chaleureuse et le mystère d’une note cuir. Guerlain est l’un des derniers parfumeurs à utiliser la technique de la teinture de vanille. Elle est réalisée à l’usine d’Orphin de manière artisanale et consiste à découper les gousses en petits morceaux et les plonger dans l’alcool jusqu’à ce qu’il prenne une belle couleur ambrée chaleureuse.', brand: 'Guerlain', price: 125, photo: 'https://www.guerlain.com/dw/image/v2/BDCZ_PRD/on/demandware.static/-/Sites-GSA_master_catalog/default/dw484d31c7/primary_packshot_3/2022/Fragrance/Men_Repack/G030312_3346470303126_L’HOMME-IDEAL-16-EDP-VAPO-100ML_1.jpg?sw=900&sh=900', intensity: 3, genre: 'Pour homme', period: 'Soirée', season: 'Plutôt l’hiver', situations: 'Un déjeuner entre amis', smell: 'Un bouquet de fleurs'},
   {name: 'Eau de Cologne du Coq', description: 'L’Eau de Cologne du Coq illustre la fraîcheur à la fois délicate et acidulée d’un matin de printemps. Légère comme un zéphyr, elle est composée de senteurs hespéridées comme le citron, la bergamote ou l’orange mais aussi de notes aromatiques comme le romarin et la lavande.', brand: 'Guerlain', price: 114, photo: 'https://www.guerlain.com/dw/image/v2/BDCZ_PRD/on/demandware.static/-/Sites-GSA_master_catalog/default/dwd09eb117/primary_packshot_3/2022/Fragrance/Colognes/G021746_3346470217461_EAU-90-COQ-EDC-VAPO-100ML_1.png?sw=900&sh=900', intensity: 1, genre: 'Pour homme', period: 'Journée', season: 'Plutôt l’été', situations: 'Un week-end intense', smell: 'Un jus d’agrumes vitaminé'},
-  {name: 'Eu de cologne Imperial', description: 'La célèbre Eau de Cologne Impériale s’harmonise autour d’accords fleuris et raffinés. Ses notes fraîches hespéridées de citron et de bergamote flirtent avec le petit grain, tandis que la magie florale du néroli vient adoucir ce bouquet d’agrumes.', brand: 'Guerlain', price: 114, photo: 'https://www.guerlain.com/dw/image/v2/BDCZ_PRD/on/demandware.static/-/Sites-GSA_master_catalog/default/dw61e2baa7/primary_packshot_3/2022/Fragrance/Colognes/G021766_3346470217669_EAU-90-IMP-EDC-VAPO-100ML_1.png?sw=900&sh=900', intensity: 1, genre: 'Pour homme', period: 'Journée', season: 'Plutôt l’été', situations: 'Un moment cocooning', smell: 'Un jus d’agrumes vitaminé'},
+  {name: 'EAu de cologne Imperial', description: 'La célèbre Eau de Cologne Impériale s’harmonise autour d’accords fleuris et raffinés. Ses notes fraîches hespéridées de citron et de bergamote flirtent avec le petit grain, tandis que la magie florale du néroli vient adoucir ce bouquet d’agrumes.', brand: 'Guerlain', price: 114, photo: 'https://www.guerlain.com/dw/image/v2/BDCZ_PRD/on/demandware.static/-/Sites-GSA_master_catalog/default/dw61e2baa7/primary_packshot_3/2022/Fragrance/Colognes/G021766_3346470217669_EAU-90-IMP-EDC-VAPO-100ML_1.png?sw=900&sh=900', intensity: 1, genre: 'Pour homme', period: 'Journée', season: 'Plutôt l’été', situations: 'Un moment cocooning', smell: 'Un jus d’agrumes vitaminé'},
   {name: 'Cologne du Parfumeur', description: 'La Cologne du Parfumeur sublime une fleur d’oranger d’une douceur extrême avec une facette verte et croquante. Elle nous dévoile ensuite des notes musquées qui rendent la composition originale et intimiste.', brand: 'Guerlain', price: 114, photo: 'https://www.guerlain.com/dw/image/v2/BDCZ_PRD/on/demandware.static/-/Sites-GSA_master_catalog/default/dwc0864bc0/primary_packshot_3/2022/Fragrance/Colognes/G017053_3346470170537_COLOGNE-PARF-10-EDC-VAPO-100ML_1.png?sw=900&sh=900', intensity: 3, genre: 'Pour homme', period: 'Journée', season: 'Plutôt l’été', situations: 'Un moment cocooning', smell: 'Un jus d’agrumes vitaminé'},
   {name: 'Encens Mythique', description: 'Fascinant et énigmatique, l’encens a inspiré Thierry Wasser, Maître-Parfumeur Guerlain, pour cette création ambrée, comme une essence brûlante. La fragrance, empreinte d’un encens aérien, est relevée par la rose et sublimée par l’ambre gris qui apporte douceur sans mesure et profondeur exceptionnelle.', brand: 'Guerlain', price: 179, photo: 'https://www.guerlain.com/dw/image/v2/BDCZ_PRD/on/demandware.static/-/Sites-GSA_master_catalog/default/dw7539e660/primary_packshot_3/2022/Fragrance/Absolus_Dorient/G013630_3346470136304_ENC_MYTH-22-EDP-VAPO-125ML.png?sw=900&sh=900', intensity: 5, genre: 'Pour homme', period: 'Soirée', season: 'Plutôt l’hiver', situations: 'Un déjeuner entre amis', smell: 'Un souvenir de vacances épicé'},
   {name: 'Patchouli Ardent', description: 'Avec Patchouli Ardent, Thierry Wasser, Maître-Parfumeur Guerlain, propose une interprétation inédite du patchouli. Matière première habituellement boisée, sombre et mystérieuse, il la sublime de manière étonnamment vibrante et lumineuse. Il associe à l’élégance de la rose, un accord majestueux de cuir et de muscs pour offrir un voyage sensoriel unique.', brand: 'Guerlain', price: 179, photo: 'https://www.guerlain.com/dw/image/v2/BDCZ_PRD/on/demandware.static/-/Sites-GSA_master_catalog/default/dw8f18d7eb/primary_packshot_3/2022/Fragrance/Absolus_Dorient/G014018_3346470140189_PATCHOULI-22-EDP-VAPO-125ML.png?sw=900&sh=900', intensity: 5, genre: 'Pour homme', period: 'Soirée', season: 'Plutôt l’hiver', situations: 'Un déjeuner entre amis', smell: 'Un fruit frais ou sucré'},
@@ -206,6 +207,35 @@ reviews = Review.create!([
   { user: users.first, perfume: perfumes[0], comment: 'Parfum incroyable!', rating: 5 },
   { user: users.last, perfume: perfumes[1], comment: 'Très frais et agréable.', rating: 4 }
 ])
+
+comments = [
+  'Parfum incroyable!',
+  'Très frais et agréable.',
+  'Un parfum unique et sophistiqué.',
+  'J\'adore ce parfum!',
+  'Un peu trop fort à mon goût.',
+  'Parfum léger et subtil.',
+  'Parfait pour une soirée!',
+  'Odeur très agréable.',
+  'Je ne suis pas fan de ce parfum.',
+  'Ce parfum est mon préféré!'
+]
+
+puts "Creating reviews..."
+reviews = []
+
+perfumes.each do |perfume|
+  rand(1..5).times do
+    reviews << {
+      user: users.sample,
+      perfume: perfume,
+      comment: comments.sample,
+      rating: rand(1..5)
+    }
+  end
+end
+Review.create!(reviews)
+
 puts "finished creating reviews"
 puts "creating favorites..."
 favorites = Favorite.create!([

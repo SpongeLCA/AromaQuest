@@ -67,7 +67,7 @@
     </div>
 
     <!-- Avis -->
-    <div class="ratings">
+    <div class="ratings" data-controller="review">
       <p data-bs-toggle="collapse" href="#reviews" role="button" aria-expanded="false" aria-controls="reviews">
         Avis (<%= @perfume.reviews.count %>)
         <span class="average-rating">
@@ -83,6 +83,20 @@
         <i class="fa-solid fa-chevron-down"></i>
       </p>
       <div class="collapse" id="reviews">
+        <p class="toggle-form" data-action="click->review#toggle">
+          <i class="fa-solid fa-plus pe-1"></i> Ajouter un avis
+        </p>
+        <%= simple_form_for [@perfume, @review], html: { class: "d-none pb-3", data: {review_target:"form"}}, local: true  do |f| %>
+          <div>
+            <%= f.input :rating, collection: 1..5, label: "Note :" %>
+          </div>
+          <div>
+            <%= f.input :comment, as: :text, label: "Commentaire :" %>
+          </div>
+          <div>
+            <%= f.button :submit, 'Valider', class: 'btn btn-primary' %>
+          </div>
+          <% end %>
         <% @perfume.reviews.each do |review| %>
           <div class="review">
             <div class="rating">

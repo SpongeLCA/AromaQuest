@@ -32,5 +32,6 @@ class PerfumesController < ApplicationController
 
   def show
     @perfume = Perfume.find(params[:id])
+    @review = Review.new
   end
 end
