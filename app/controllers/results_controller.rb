@@ -108,7 +108,7 @@ class ResultsController < ApplicationController
         answers: ["Un week-end intense", "Un déjeuner entre amis", "Un moment cocooning", "Toute occasion"]
       },
       {
-        question: "Un parfum qui sent comme :",
+        question: "Un parfum qui évoque :",
         answers: ["Un jus d’agrumes vitaminé", "Un bouquet de fleurs", "Un fruit frais ou sucré", "Un dessert très gourmand", "Une balade en forêt", "Un bouquet d’herbes et aromates", "Des embruns rafraichissants", "Un souvenir de vacances épicé", "Un cocktail intense et puissant"]
       }
     ]
