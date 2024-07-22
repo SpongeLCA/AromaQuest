@@ -81,12 +81,11 @@
 .btn-cart {
   font-size: 1.5rem;
   cursor: pointer;
-  color: #343a40;
+  color: #000000;
 }
 
-// Détails du parfum
 .perfume-details {
-  margin-bottom: 20px; // Espacement entre les sections
+  margin-bottom: 20px;
   text-align: left;
   font-family: 'archivo black', sans-serif;
 
@@ -97,19 +96,21 @@
 
     .perfume-brand {
       font-size: 1.25rem;
-      color: #333;
+      color: #000000;
     }
 
     .perfume-price {
       font-size: 1.25rem;
-      color: #666;
+      color: #000000;
       margin-left: 15px;
+
     }
   }
 
   .perfume-name {
-    font-size: 1.5rem;
-    color: #333;
+    font-size: 1.2rem;
+    color: #000000;
+    text-transform: uppercase;
   }
 
   .perfume-intensity {
@@ -117,39 +118,39 @@
     color: #666;
     margin-top: 10px;
     display: flex;
-    align-items: center; // Aligne les éléments au centre verticalement
+    align-items: center;
     gap: 8px;
 
     .intensity-dots {
       display: flex;
       align-items: center;
-      gap: 4px; // Espacement entre les points
+      gap: 4px;
 
       .dot {
         width: 8px;
         height: 8px;
-        background-color: #000; // Couleur des points noirs
-        border-radius: 50%; // Rendre les points ronds
+        background-color: #000;
+        border-radius: 50%;
         display: inline-block;
       }
 
       .dot.empty {
-        background-color: #e0e0e0; // Couleur des points vides (gris clair)
+        background-color: #e0e0e0;
       }
     }
   }
 }
 
-// Description
+
 .perfume-description {
-  margin-bottom: 30px; // Espacement entre les sections
+  margin-bottom: 30px;
   text-align: left;
   font-family: 'crimson text', serif;
 }
 
 // Avis
 .ratings {
-  margin-bottom: 20px; // Espacement entre les sections
+  margin-bottom: 20px;
 
   p {
     cursor: pointer;
@@ -158,7 +159,7 @@
     align-items: center;
 
     .average-rating {
-      margin-left: 10px; // Réduit l'espace entre le texte et les étoiles
+      margin-left: 10px;
       display: flex;
       align-items: center;
 
@@ -168,7 +169,7 @@
     }
 
     i.fa-chevron-down {
-      font-size: 1rem; // Ajuste la taille de la flèche
+      font-size: 1rem;
     }
   }
 
@@ -185,9 +186,8 @@
   }
 }
 
-// Notes de parfum
 .notes-section {
-  margin-bottom: 30px; // Espacement entre les sections
+  margin-bottom: 30px;
 
   .btn-notes {
     background-color: #9A9B89;
