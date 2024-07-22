@@ -34,7 +34,7 @@
     <!-- Partie avec les boutons "Trouver mon parfum" et "Cart" -->
     <div class="action-buttons-wrapper">
       <div class="action-buttons">
-        <%= link_to 'TROUVER MON PARFUM', perfumes_path, class: 'btn btn-dark' %>
+        <button data-bs-toggle="modal" data-bs-target="#findModal" class="btn btn-dark">Trouver mon parfum</button>
         <i class="fa-solid fa-cart-shopping btn-cart"></i>
       </div>
     </div>
@@ -147,6 +147,35 @@
             <a href="https://api.whatsapp.com/send?text=<%= perfume_url(@perfume) %>" target="_blank" class="btn btn-success">
               <i class="fa-brands fa-whatsapp fa-2x"></i> WhatsApp
             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal pour trouver parfum -->
+  <div class="modal fade" id="findModal" tabindex="-1" aria-labelledby="findModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content map-modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="findModalLabel">Trouver mon parfum</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenu du modal -->
+          <div class="map-box" style="width: 100%; height: 250px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+          <div class="infos-magasins">
+            <% @magasins.each do |magasin| %>
+              <div class="magasin">
+                <h3><%= magasin.name %></h3>
+                <p><%= magasin.address %></p>
+                <hr>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
