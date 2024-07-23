@@ -1,0 +1,38 @@
+<div class="orders-container">
+  <div class="back-orga">
+    <div class="back-icon">
+      <%= link_to dashboard_path do %>
+        <i class="fa-solid fa-chevron-left"></i>
+      <% end %>
+    </div>
+    <h2 class="title-order">MES ACHATS</h2>
+  </div>
+  <p>Retrouvez toutes vos commandes ainsi que vos demandes de retour.</p>
+
+  <div class="orders-tab">
+    <button class="btn btn-active">EN LIGNE</button>
+    <button class="btn btn-inactive">EN MAGASIN</button>
+  </div>
+
+  <div class="orders-section">
+    <% if @orders.any? %>
+      <% @orders.each do |order| %>
+        <div class="order-item">
+          <button class="btn-order" data-bs-toggle="collapse" data-bs-target="#order-<%= order.id %>" aria-expanded="false" aria-controls="order-<%= order.id %>">
+            COMMANDE DU <%= formatted_date(order.created_at).upcase %>
+          </button>
+          <div class="collapse" id="order-<%= order.id %>">
+            <div class="order-details">
+              <% order.order_items.each do |item| %>
+                <p><%= item.perfume.name %> - <%= item.quantity %> x <%= number_to_currency(item.price, unit: "€") %></p>
+              <% end %>
+              <p><strong>Total:</strong> <%= number_to_currency(order.total, unit: "€") %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Aucune commande disponible pour le moment.</p>
+    <% end %>
+  </div>
+</div>

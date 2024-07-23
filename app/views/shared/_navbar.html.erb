@@ -26,11 +26,17 @@
               <li><%= link_to "TABLEAU DE BORD", dashboard_path, class: "dropdown-item" %></li>
               <li><%= link_to "FAVORIS", favorites_dashboard_path, class: "dropdown-item" %></li>
               <li><%= link_to "RÉSULTATS", results_dashboard_path, class: "dropdown-item" %></li>
-              <li><%= link_to "MES ACHATS", results_dashboard_path, class: "dropdown-item" %></li>
+              <li><%= link_to "MES ACHATS", orders_path, class: "dropdown-item" %></li>
             </ul>
           </li>
           <li class="nav-item">
             <%= link_to "SE DÉCONNECTER", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
+              <i class="fa fa-shopping-cart"></i>
+              <span class="badge badge-pill badge-danger position-absolute top-0 start-100 translate-middle"><%= current_user.cart.cart_items.sum(:quantity) %></span>
+            </a>
           </li>
         <% else %>
           <li class="nav-item">
@@ -41,3 +47,48 @@
     </div>
   </div>
 </nav>
+
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartModalLabel">MON PANIER</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% if current_user.cart.cart_items.any? %>
+          <ul class="list-group mb-3">
+            <% current_user.cart.cart_items.each do |item| %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <strong><%= item.perfume.name %></strong>
+                  <p><%= item.perfume.brand %></p>
+                </div>
+                <div class="d-flex align-items-center">
+                  <input type="number" value="<%= item.quantity %>" class="form-control quantity-input" data-id="<%= item.id %>" data-price="<%= item.perfume.price %>" min="1">
+                  <span class="ms-3 item-total-price"><%= number_to_currency(item.quantity * item.perfume.price, unit: "€") %></span>
+                  <%= link_to cart_item_path(item), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn btn-danger btn-sm ms-3" do %>
+                    &times;
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+          <div class="d-flex justify-content-between">
+            <p><strong>Livraison:</strong></p>
+            <p>0€</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p><strong>Total:</strong></p>
+            <p id="cart-total"><%= number_to_currency(current_user.cart.cart_items.sum { |item| item.quantity * item.perfume.price }, unit: "€") %></p>
+          </div>
+          <%= link_to 'Commander', orders_path, method: :post, class: 'btn btn-primary w-100' %>
+        <% else %>
+          <p>Votre panier est vide.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
