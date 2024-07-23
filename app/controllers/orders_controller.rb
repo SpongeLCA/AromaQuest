@@ -28,6 +28,10 @@ class OrdersController < ApplicationController
 
   private
 
+  def set_locale
+    I18n.locale = :fr
+  end
+
   def set_order
     @order = current_user.orders.find(params[:id])
   end
