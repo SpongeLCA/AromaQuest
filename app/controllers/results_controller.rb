@@ -25,6 +25,8 @@ class ResultsController < ApplicationController
     @result = Result.find(params[:id])
     @perfumes = filter_perfumes(@result)
     @perfumes_count = @perfumes.count
+    @perfumes_result = PerfumesResult.new(perfume_ids: @perfumes.ids, result_id: @result.id)
+    @perfumes_result.save
   end
 
   private

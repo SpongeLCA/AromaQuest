@@ -19,6 +19,9 @@ class PagesController < ApplicationController
 
   def results
     @results = current_user.results
+    @results.each do |result|
+      @perfumes_result = PerfumesResult.find(result.id)
+    end
   end
 
 

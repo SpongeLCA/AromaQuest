@@ -35,5 +35,7 @@
   <h2 class="title-result text-center">CES PARFUMS QUI VOUS CORRESPONDENT...</h2>
 
   <P>Ces parfums ont été plusieurs fois proposés à la suite de vos questionnaires :</P>
-
+  <% @perfumes_result.each do |perfume_result| %>
+    <%= perfume_result.perfumes_ids %>
+  <% end %>
 </div>
