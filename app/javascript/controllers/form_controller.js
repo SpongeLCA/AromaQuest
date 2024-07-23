@@ -13,6 +13,10 @@ export default class extends Controller {
     event.preventDefault();
     const currentStep = this.currentStepIndex();
     const selectedAnswer = event.currentTarget.dataset.answer;
+
+    this.answerTargets.forEach(button => button.classList.remove('clicked'));
+    event.currentTarget.classList.add('clicked');
+
     this.addHiddenField(currentStep, selectedAnswer);
     if (currentStep < this.stepTargets.length - 1) {
       this.stepTargets[currentStep].classList.add("hidden");
