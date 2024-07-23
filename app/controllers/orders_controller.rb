@@ -39,4 +39,10 @@ class OrdersController < ApplicationController
   def calculate_total
     current_user.cart.cart_items.sum { |item| item.quantity * item.perfume.price }
   end
+
+  private
+
+  def set_locale
+    I18n.locale = :fr
+  end
 end
