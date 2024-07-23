@@ -28,6 +28,7 @@
   text-align: left;
   padding: 20px;
   border-radius: 10px;
+  margin-top: 10px;
 }
 
 .dashboard-cards .card {
@@ -39,15 +40,19 @@
   margin-right: 10px;
   width: calc(100% - 20px);
   max-width: 600px;
+  min-height: 50px; /* Définir une hauteur minimale pour les cartes */
+  height: 50px; /* Définir une hauteur fixe pour les cartes */
+
 }
 
 .dashboard-cards .card-body {
-  padding: 15px 15px;
+  padding: 10px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: 'archivo black', sans-serif;
-  font-size: 1rem;
+  text-transform: uppercase;
+  font-size: 0,7rem;
 }
 
 .dashboard-cards .card-body i.icon-large {
@@ -58,7 +63,7 @@
 .dashboard-cards .card-body a {
   flex-grow: 1;
   text-align: left;
-  padding-left: 15px;
+  padding-left: 20px;
   text-decoration: none;
   color: #000;
   font-weight: bold;
@@ -69,8 +74,36 @@
   font-size: 1em;
 }
 
+.notifications-newsletter-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 20px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 1rem;
+    color: #000;
+  }
+
+  .icon-toggle {
+    font-size: 3rem;
+    color: #9A9B89;
+    margin-left: 20px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #878080;
+    margin: 0;
+    width: 100%;
+  }
+}
+
 .logout-button {
-  margin-top: 30px;
+  margin-bottom: 40px;
   text-align: center;
 }
 
