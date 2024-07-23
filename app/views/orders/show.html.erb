@@ -1,0 +1,21 @@
+<div class="order-details-container">
+  <div class="back-orga">
+    <div class="back-icon">
+      <%= link_to orders_path do %>
+        <i class="fa-solid fa-chevron-left"></i>
+      <% end %>
+    </div>
+    <h2 class="title-order">DÉTAIL DE LA COMMANDE</h2>
+  </div>
+  <p>Retrouvez les détails de votre commande passée.</p>
+
+  <div class="order-section">
+    <h3>COMMANDE DU <%= formatted_date(@order.created_at).upcase %></h3>
+    <ul>
+      <% @order.order_items.each do |item| %>
+        <li><%= item.perfume.name %> - <%= item.quantity %> x <%= number_to_currency(item.price, unit: "€") %></li>
+      <% end %>
+    </ul>
+    <p><strong>Total:</strong> <%= number_to_currency(@order.total, unit: "€") %></p>
+  </div>
+</div>

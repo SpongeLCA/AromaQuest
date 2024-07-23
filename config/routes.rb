@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
   root to: 'pages#home'
 
   resources :results, only: [:new, :create, :index, :show]
@@ -14,4 +15,8 @@ Rails.application.routes.draw do
     get 'results', to: 'pages#results', as: :results
     get 'apropos', to: 'pages#apropos', as: :apropos
   end
- end
+
+  resources :cart_items, only: [:create, :update, :destroy]
+  resource :cart, only: [:show]
+  resources :orders, only: [:create, :show, :index]
+end

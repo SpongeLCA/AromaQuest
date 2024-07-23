@@ -1,4 +1,6 @@
 class PerfumesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @perfumes = Perfume.all
 
@@ -29,7 +31,6 @@ class PerfumesController < ApplicationController
     @heart_notes = Note.distinct.pluck(:coeur).map { |n| n.split(', ') }.flatten.uniq
     @base_notes = Note.distinct.pluck(:fond).map { |n| n.split(', ') }.flatten.uniq
   end
-
   def show
     @perfume = Perfume.find(params[:id])
     @review = Review.new
