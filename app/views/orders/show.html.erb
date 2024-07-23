@@ -13,40 +13,45 @@
   <div class="card order-card">
     <div class="order-items">
       <div class="order-item-header d-flex justify-content-between align-items-center">
-        <div class="order-item-image-header"></div>
+        <div class="order-item-quantity-price-header">
+          <strong>Quantité</strong>
+        </div>
         <div class="order-item-details-header">
           <strong>Produit</strong>
         </div>
-        <div class="order-item-quantity-price-header d-flex">
-          <span><strong>Quantité</strong></span>
-          <span><strong>Prix</strong></span>
+        <div class="order-item-quantity-price-header">
+          <strong>Prix</strong>
         </div>
       </div>
       <hr class="item-separator">
       <% @order.order_items.each do |item| %>
         <div class="order-item d-flex justify-content-between align-items-center">
-          <div class="order-item-image">
-            <%= image_tag item.perfume.photo, class: 'img-thumbnail' %>
-          </div>
-          <div class="order-item-details">
-            <strong><%= item.perfume.name %></strong>
-            <p><%= item.perfume.brand %></p>
-          </div>
-          <div class="order-item-quantity-price d-flex">
+          <div class="order-item-quantity">
             <span><%= item.quantity %></span>
+          </div>
+          <div class="order-item-details d-flex align-items-center">
+            <div class="order-item-image">
+              <%= image_tag item.perfume.photo, class: 'img-thumbnail' %>
+            </div>
+            <div class="order-item-info ml-2">
+              <strong><%= item.perfume.name %></strong>
+              <p><%= item.perfume.brand %></p>
+            </div>
+          </div>
+          <div class="order-item-price">
             <span><%= number_to_currency(item.price, unit: "€") %></span>
           </div>
         </div>
         <hr class="item-separator">
       <% end %>
     </div>
-    <div class="order-summary">
-      <div class="d-flex justify-content-between">
+    <div class="order-summary d-flex justify-content-between align-items-center">
+      <div>
         <p>Livraison</p>
-        <p>0€</p>
+        <p>Total</p>
       </div>
-      <div class="d-flex justify-content-between">
-        <p>TOTAL</p>
+      <div>
+        <p>0€</p>
         <p><%= number_to_currency(@order.total, unit: "€") %></p>
       </div>
     </div>
