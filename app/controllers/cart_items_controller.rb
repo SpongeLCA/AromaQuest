@@ -1,14 +1,16 @@
 class CartItemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_cart
 
   def create
     perfume = Perfume.find(params[:perfume_id])
     @cart_item = @cart.cart_items.find_or_initialize_by(perfume: perfume)
     @cart_item.quantity = (@cart_item.quantity || 0) + 1
+
     if @cart_item.save
-      redirect_to perfume_path(perfume), notice: 'Parfum ajouté au panier'
+      redirect_to request.referrer, notice: 'Parfum ajouté au panier'
     else
-      redirect_to perfume_path(perfume), alert: 'Impossible d\'ajouter le parfum au panier'
+      redirect_to request.referrer, alert: 'Impossible d\'ajouter le parfum au panier'
     end
   end
 
