@@ -19,9 +19,17 @@ class PagesController < ApplicationController
 
   def results
     @results = current_user.results
-    @results.each do |result|
-      @perfumes_result = PerfumesResult.find(result.id)
-    end
+    @perfumes_result = @results.map do |result|
+      PerfumesResult.find_by(result_id: result.id)
+    end.compact
+
+    all_perfumes = @perfumes_result.map do |perfumes_result|
+      if perfumes_result.present?
+        perfume_ids = perfumes_result.perfume_ids.split(',')
+        Perfume.where(id: perfume_ids).to_a
+      end
+    end.compact.flatten
+    @perfumes = all_perfumes.take(5)
   end
 
 
