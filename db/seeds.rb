@@ -213,7 +213,6 @@ comments = [
   'Très frais et agréable.',
   'Un parfum unique et sophistiqué.',
   'J\'adore ce parfum!',
-  'Un peu trop fort à mon goût.',
   'Parfum léger et subtil.',
   'Parfait pour une soirée!',
   'Odeur très agréable.',
@@ -230,7 +229,7 @@ perfumes.each do |perfume|
       user: users.sample,
       perfume: perfume,
       comment: comments.sample,
-      rating: rand(1..5)
+      rating: rand(3..5)
     }
   end
 end

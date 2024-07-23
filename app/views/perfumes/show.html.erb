@@ -83,7 +83,7 @@
         <i class="fa-solid fa-chevron-down"></i>
       </p>
       <div class="collapse" id="reviews">
-        <p class="toggle-form" data-action="click->review#toggle">
+        <p class="toggle-form btn-avis" data-action="click->review#toggle">
           <i class="fa-solid fa-plus pe-1"></i> Ajouter un avis
         </p>
         <%= simple_form_for [@perfume, @review], html: { class: "d-none pb-3", data: {review_target:"form"}}, local: true  do |f| %>
@@ -94,7 +94,7 @@
             <%= f.input :comment, as: :text, label: "Commentaire :" %>
           </div>
           <div>
-            <%= f.button :submit, 'Valider', class: 'btn btn-primary' %>
+            <%= f.button :submit, 'Valider', class: 'btn btn-avis' %>
           </div>
           <% end %>
         <% @perfume.reviews.each do |review| %>

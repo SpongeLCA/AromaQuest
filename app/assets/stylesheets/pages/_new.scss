@@ -106,8 +106,9 @@
   &:hover {
     background-color: #D9D9D9;
   }
-  &.selected {
+  &.clicked {
     background-color: #D9D9D9;
+    transition: background-color 0.3s ease;
   }
 }
 .answer-larger {
@@ -125,6 +126,13 @@
     font-size: 20px;
   }
 
+  &:hover {
+    background-color: #D9D9D9;
+  }
+  &.clicked {
+    background-color: #D9D9D9;
+  }
+
 }
 
 .answer-larger2 {
@@ -140,6 +148,13 @@
   .answers-paragraph {
     font-family: 'Archivo Black', sans-serif;
     font-size: 20px;
+  }
+
+  &:hover {
+    background-color: #D9D9D9;
+  }
+  &.clicked {
+    background-color: #D9D9D9;
   }
 }
 
