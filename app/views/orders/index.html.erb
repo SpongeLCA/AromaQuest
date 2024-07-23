@@ -7,11 +7,11 @@
     </div>
     <h2 class="title-order">MES ACHATS</h2>
   </div>
-  <p>Retrouvez toutes vos commandes ainsi que vos demandes de retour.</p>
+  <p class="description-order">Retrouvez toutes vos commandes ainsi que vos demandes de retour.</p>
 
   <div class="orders-tab">
-    <button class="btn btn-active">EN LIGNE</button>
-    <button class="btn btn-inactive">EN MAGASIN</button>
+    <p class="btn btn-active">EN LIGNE</p>
+    <p class="btn btn-inactive">EN MAGASIN</p>
   </div>
 
   <div class="orders-section">
@@ -19,14 +19,26 @@
       <% @orders.each do |order| %>
         <div class="order-item">
           <button class="btn-order" data-bs-toggle="collapse" data-bs-target="#order-<%= order.id %>" aria-expanded="false" aria-controls="order-<%= order.id %>">
-            COMMANDE DU <%= formatted_date(order.created_at).upcase %>
+            COMMANDE DU <%= formatted_date(order.created_at).upcase %><i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="collapse" id="order-<%= order.id %>">
             <div class="order-details">
               <% order.order_items.each do |item| %>
-                <p><%= item.perfume.name %> - <%= item.quantity %> x <%= number_to_currency(item.price, unit: "€") %></p>
+              <div class="order-details2">
+                <h5><%= item.perfume.name.upcase %></h5>
+                <p><%= item.quantity %> </p>
+                <p><%= number_to_currency(item.price, unit: "€") %></p>
+              </div>
               <% end %>
-              <p><strong>Total:</strong> <%= number_to_currency(order.total, unit: "€") %></p>
+              <hr class="hr-order">
+              <div class="order-details2">
+                <p>Livraison</p>
+                <p>0 €</p>
+              </div>
+              <div class="order-details2">
+                <p>Total</p>
+                <%= number_to_currency(order.total, unit: "€") %>
+              </div>
             </div>
           </div>
         </div>

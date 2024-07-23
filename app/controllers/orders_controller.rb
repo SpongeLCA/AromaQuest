@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_order, only: [:show]
+  before_action :set_locale, only: [:show, :index]
 
   def create
     @order = current_user.orders.build
@@ -33,5 +34,11 @@ class OrdersController < ApplicationController
 
   def calculate_total
     current_user.cart.cart_items.sum { |item| item.quantity * item.perfume.price }
+  end
+
+  private
+
+  def set_locale
+    I18n.locale = :fr
   end
 end
