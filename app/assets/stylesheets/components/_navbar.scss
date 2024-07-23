@@ -61,7 +61,90 @@
   }
 
   .icon-cart {
-    font-size: 2.5rem; /* Ajustez la taille ici */
+    font-size: 1.5rem; /* Ajustez la taille ici */
   }
 
+}
+
+/* Modal */
+.modal-content {
+  color: #000 !important; /* Texte en noir */
+  font-family: 'Archivo', 'Helvetica', 'sans-serif'; /* Police du modal */
+}
+
+.modal-header {
+  border-bottom: none; /* Supprime la bordure sous le header */
+  font-family: 'Archivo', 'Helvetica', 'sans-serif'; /* Police du modal */
+}
+
+.modal-title {
+  color: #000 !important; /* Titre en noir */
+  text-align: center; /* Titre centré */
+  width: 100%; /* Prend toute la largeur disponible */
+  font-size: 1.25rem; /* Agrandit légèrement la police du titre */
+}
+
+.btn-close-custom {
+  background: black;
+  border: none;
+  font-size: 1.5rem;
+  color: #000 !important; /* Couleur de l'icône noire */
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse; /* Pour éviter les espacements */
+  font-size: 1rem; /* Agrandit légèrement la police des éléments de la table */
+}
+
+.cart-table td {
+  padding: 10px;
+}
+
+.cart-table .text-end {
+  text-align: right; /* Aligne le texte à droite pour la quantité et le prix */
+}
+
+.item-details .perfume-name {
+  text-transform: uppercase;
+}
+
+.border-top {
+  border-top: 2px solid #000; /* Barre noire en bas */
+}
+
+/* Changer la police de LIVRAISON et TOTAL */
+.delivery-total-section {
+  font-family: 'Archivo', 'Helvetica', 'sans-serif';
+  font-size: 1.1rem; /* Ajustez la taille de la police selon vos besoins */
+}
+
+.delivery-total-section p {
+  margin: 10px; /* Supprime les marges */
+}
+
+.btn-delete {
+  background-color: #fff; /* Fond blanc */
+  color: #000; /* Texte noir */
+  border: 1px solid #000; /* Bordure noire */
+  border-radius: 50%; /* Arrondir le bouton pour le style */
+  width: 30px; /* Largeur du bouton */
+  height: 30px; /* Hauteur du bouton */
+  text-align: center; /* Centrer le texte */
+  line-height: 30px; /* Centrer verticalement le texte */
+  padding: 0; /* Supprimer les padding */
+  font-size: 18px; /* Taille de la croix */
+}
+
+.btn-commande {
+  background-color: #9A9B89; /* Fond du bouton COMMANDER */
+  color: #fff !important; /* Texte en blanc */
+  border: none; /* Supprimer la bordure */
+  outline: none; /* Supprimer l'effet d'outline au focus */
+  box-shadow: none; /* Supprimer l'effet d'ombre au focus */
+  width: 100%; /* Prendre toute la largeur disponible */
+  padding: 10px; /* Ajouter un peu de padding pour un meilleur aspect */
+  font-size: 1rem; /* Ajuster la taille de la police */
+  cursor: pointer; /* Ajouter un pointeur au survol */
+  font-family: 'Archivo', 'Helvetica', 'sans-serif'; /* Police du modal */
 }
