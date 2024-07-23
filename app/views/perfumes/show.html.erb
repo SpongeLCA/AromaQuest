@@ -44,7 +44,7 @@
       <h1 class="perfume-name"><%= @perfume.name %></h1>
       <div class="perfume-info">
         <h2 class="perfume-brand"><%= @perfume.brand %></h2>
-        <p class="perfume-price"><%= number_to_currency(@perfume.price, unit: "€") %></p>
+        <p class="perfume-price"><%= number_to_currency(@perfume.price, unit: "€", format: "%n %u") %></p>
       </div>
        <h3 class="perfume-intensity">
         Intensité

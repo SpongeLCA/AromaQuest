@@ -61,7 +61,7 @@
             <h5 class="perfume-name"><%= perfume.name %></h5>
             <div class="perfume-details">
               <p class="perfume-brand"><strong><%= perfume.brand %></strong></p>
-              <p class="perfume-price"><%= number_to_currency(perfume.price, unit: "€") %></p>
+              <p class="perfume-price"><%= number_to_currency(perfume.price, unit: "€", format: "%n %u") %></p>
             </div>
             <div class="perfume-reviews">
               <p>Avis (<%= perfume.reviews.count %>)</p>
