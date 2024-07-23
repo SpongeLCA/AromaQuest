@@ -27,7 +27,7 @@
               <div class="order-details2">
                 <h5><%= item.perfume.name.upcase %></h5>
                 <p><%= item.quantity %> </p>
-                <p><%= number_to_currency(item.price, unit: "€") %></p>
+                <p><%= number_to_currency(item.price, unit: "€", format: "%n %u") %></p>
               </div>
               <% end %>
               <hr class="hr-order">
@@ -37,7 +37,7 @@
               </div>
               <div class="order-details2">
                 <p>Total</p>
-                <%= number_to_currency(order.total, unit: "€") %>
+                <%= number_to_currency(order.total, unit: "€", format: "%n %u") %>
               </div>
             </div>
           </div>
