@@ -51,8 +51,8 @@
         <p>Total</p>
       </div>
       <div>
-        <p>0 €</p>
-        <p><%= number_to_currency(@order.total, unit: "€", format: "%n %u") %></p>
+        <p><%= number_to_currency(@delivery_fee, unit: "€") %></p>
+        <p><%= number_to_currency(@total_with_delivery, unit: "€", format: "%n %u") %></p>
       </div>
     </div>
   </div>
