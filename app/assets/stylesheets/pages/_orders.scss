@@ -12,6 +12,7 @@
   margin: 0; /* Élimine les marges externes */
   width: 100%; /* Prend toute la largeur de l'écran */
   box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+  z-index: 1000;
 
 
   .back-icon {
@@ -37,7 +38,7 @@
     padding: 0 60px; /* Ajoute du padding pour créer de l'espace autour du titre, modifiez si nécessaire */
   }
 
-  .description-order{
+  .description-order {
     margin-bottom: 20px;
   }
 }
@@ -51,6 +52,8 @@
   text-align: center;
   opacity: 1;
   margin-bottom: 20px;
+  z-index: 999;
+
 
   p {
     font-weight: bold;
