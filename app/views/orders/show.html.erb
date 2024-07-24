@@ -8,7 +8,7 @@
     <h2 class="title-order">RÉCAPITULATIF DE COMMANDE</h2>
   </div>
   <p>Merci pour votre commande !</p>
-  <p>Retrouvez les détails de votre commande passée le <%= formatted_date(@order.created_at).upcase %></p>
+  <p>Retrouvez les détails de votre commande passée le <%= formatted_date(@order.created_at).upcase %> :</p>
 
   <div class="card order-card">
     <div class="order-items">
@@ -26,7 +26,7 @@
       <hr class="item-separator">
       <% @order.order_items.each do |item| %>
         <div class="order-item d-flex justify-content-between align-items-center">
-          <div class="order-item-details d-flex align-items-center">
+          <div class="order-item-details">
             <%# <div class="order-item-image"> %>
               <%# <%= image_tag item.perfume.photo, class: 'img-thumbnail' %>
             <%# </div> %>
@@ -51,7 +51,7 @@
         <p>Total</p>
       </div>
       <div>
-        <p><%= number_to_currency(@delivery_fee, unit: "€") %></p>
+        <p><%= number_to_currency(@delivery_fee, unit: "€", format: "%n %u") %></p>
         <p><%= number_to_currency(@total_with_delivery, unit: "€", format: "%n %u") %></p>
       </div>
     </div>

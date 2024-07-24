@@ -34,7 +34,7 @@
 .order-card {
   background-color: #fff;
   font-family: 'Archivo Black', sans-serif;
-  padding: 20px;
+  padding: 30px 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -72,31 +72,39 @@
 
 .order-item-details {
   flex-grow: 2;
-  margin-left: 10px;
+
+  .order-item-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width:130px;
+
+    h5{
+      font-size: 14px;
+      margin-bottom: 0px;
+    }
+
+    p {
+      font-size: 12px;
+      margin-top: 0px;
+    }
+  }
 }
 
-.order-item-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.order-item-quantity-price span{
   text-align: left;
-
-  h5{
-    font-size: 14px;
-    margin-bottom: 0px;
-  }
-
-  p {
-    font-size: 12px;
-    margin-top: 0px;
-  }
 }
+
+
 
 .item-separator {
   margin-left: 0px;
-  width: 100%;
+  width: 95%;
+  margin-left: 10px;
   color: black;
-  opacity: 0.3;
+  opacity: 1;
+  border: 1px solid;
 }
 
 .order-summary {
