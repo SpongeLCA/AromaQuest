@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.build
     @order.status = 'pending'
-    @order.total = calculate_total
+    @order.total = calculate_total_with_delivery
 
     if @order.save
       current_user.cart.cart_items.each do |cart_item|
@@ -20,6 +20,10 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order_items = @order.order_items
+    @total_price = @order_items.sum { |item| item.price * item.quantity }
+    @delivery_fee = @total_price * 0.10
+    @total_with_delivery = @total_price + @delivery_fee
   end
 
   def index
@@ -36,7 +40,9 @@ class OrdersController < ApplicationController
     @order = current_user.orders.find(params[:id])
   end
 
-  def calculate_total
-    current_user.cart.cart_items.sum { |item| item.quantity * item.perfume.price }
+  def calculate_total_with_delivery
+    total = current_user.cart.cart_items.sum { |item| item.quantity * item.perfume.price }
+    delivery_fee = total * 0.10
+    total + delivery_fee
   end
 end
