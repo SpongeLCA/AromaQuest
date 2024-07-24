@@ -3,14 +3,24 @@
   background-color: #f5f4ed;
 }
 
-.back-orga {
-  display: flex;
+.back-orga-recap{
+  display:flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
-}
+  position: relative;
 
-.back-icon {
-  margin-right: 10px;
+  .back-icon-recap {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+
+    .fa-chevron-left {
+      font-size: 1.5rem;
+      color: #000000;
+    }
+  }
 }
 
 .title-order {
