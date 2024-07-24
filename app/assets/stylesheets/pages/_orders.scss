@@ -1,44 +1,40 @@
-.orders-container {
-  background-color: #f3f2ed;
-  padding: 20px;
-  margin: 0 auto;
+.page-container {
+  padding: 20px; /* Ajoute 20px d'espace autour de tout le contenu */
+  box-sizing: border-box; /* Inclut le padding dans la largeur totale du conteneur */
+}
 
-  h1 {
-    color: #000000;
-    margin-bottom: 20px;
-  }
 
-  p {
-    color: #000000;
-  }
+.banner-myorders {
+  position: sticky; /* Position relative pour l'icône de retour */
+  top: 0;
+  background-color: #fff; /* Fond blanc */
+  padding: 40px 20px; /* Padding interne */
+  margin: 0; /* Élimine les marges externes */
+  width: 100%; /* Prend toute la largeur de l'écran */
+  box-sizing: border-box; /* Inclut le padding dans la largeur totale */
 
-  .back-orga{
-    display:flex;
+
+  .back-icon {
+    position: absolute; /* Positionnement absolu pour l'icône */
+    left: 20px; /* Espacement du bord gauche */
+    top: 50%; /* Alignement vertical */
+    transform: translateY(-50%); /* Centrage vertical */
+    display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    position: relative;
 
-    .back-icon {
-      position: absolute;
-      left: 0;
-      display: flex;
-      align-items: center;
-
-      .fa-chevron-left {
-        font-size: 1.5rem;
-        color: #000000;
-      }
+    .fa-chevron-left {
+      font-size: 1.5rem;
+      color: #000;
     }
   }
 
-  .title-order {
+  .title-myorders {
+    text-align: center; /* Centre le texte */
     font-size: 1.5rem;
     font-weight: bold;
-    color: #000000;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
+    color: #000;
+    margin: 0; /* Élimine les marges par défaut */
+    padding: 0 60px; /* Ajoute du padding pour créer de l'espace autour du titre, modifiez si nécessaire */
   }
 
   .description-order{
@@ -140,11 +136,11 @@
     }
 
     .hr-order {
-      color: black;
-      opacity: 1;
-      border: 1px solid;
+      border: 0;
+      height: 1px;
+      background: #ddd;
       margin-left: 15px;
-      width: 90%;
+      width: 100%;
     }
   }
 
