@@ -4,13 +4,15 @@
 
 .map-modal-content {
   background-color: black;
-    color: white;
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 16px;
+  color: white;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 16px;
+
   h3{
     color: white;
     font-family: 'Archivo Black', sans-serif;
     font-size: 18px;
+    font-weight: bold;
   }
 }
 
@@ -21,7 +23,8 @@
 }
 
 .magasin {
-  margin : 10px
+  margin : 10px;
+  color : white;
 }
 
 hr {
@@ -29,11 +32,15 @@ hr {
   margin-left: 50px;
   color : white;
   opacity: 1;
+  border: 1px solid;
 }
 
-.modal-title{
+.modal-title-map{
   font-family: "Crimson Text", "Georgia", "serif";
+  font-weight: bold;
   color : white;
+  text-align: center;
+  width: 100%;
   font-size: 20px;
 }
 
