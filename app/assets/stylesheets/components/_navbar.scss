@@ -75,15 +75,24 @@
 }
 
 .modal-header {
-  border-bottom: none; /* Supprime la bordure sous le header */
-  font-family: 'Archivo', 'Helvetica', 'sans-serif'; /* Police du modal */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem; /* Ajoutez du padding si nécessaire */
+  position: relative;
 }
 
+.modal-title-container {
+  flex: 1; /* Prend tout l'espace disponible */
+  display: flex;
+  justify-content: center; /* Centre le titre horizontalement */
+}
 .modal-title {
   color: #000 !important; /* Titre en noir */
   text-align: center; /* Titre centré */
   width: 100%; /* Prend toute la largeur disponible */
   font-size: 1.25rem; /* Agrandit légèrement la police du titre */
+  margin-left: 25px;
 }
 
 .btn-close-custom {
@@ -93,36 +102,63 @@
   color: #000 !important; /* Couleur de l'icône noire */
 }
 
-.cart-table {
-  width: 100%;
-  border-collapse: collapse; /* Pour éviter les espacements */
-  font-size: 1rem; /* Agrandit légèrement la police des éléments de la table */
+.cart-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-.cart-table td {
-  padding: 10px;
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
 }
 
-.cart-table .text-end {
-  text-align: right; /* Aligne le texte à droite pour la quantité et le prix */
+.item-details {
+  flex-grow: 1;
+  max-width: 200px; /* Limite la largeur maximale du conteneur du titre */
+
 }
 
-.item-details .perfume-name {
+.perfume-name {
+  display: block;
   text-transform: uppercase;
+  font-weight: bold;
+  white-space: normal;
 }
 
-.border-top {
-  border-top: 2px solid #000; /* Barre noire en bas */
+.perfume-brand {
+  display: block;
+}
+
+.item-quantity-price {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  white-space: nowrap; /* Empêche les éléments de se décaler sur plusieurs lignes */
+
+}
+
+.item-quantity, .item-price {
+  font-size: 1rem;
+}
+
+.item-delete {
+  margin-left: 10px;
 }
 
 /* Changer la police de LIVRAISON et TOTAL */
 .delivery-total-section {
   font-family: 'Archivo', 'Helvetica', 'sans-serif';
   font-size: 1.1rem; /* Ajustez la taille de la police selon vos besoins */
+  display: flex;
+  flex-direction: column;
 }
 
-.delivery-total-section p {
-  margin: 10px; /* Supprime les marges */
+.delivery, .total {
+  display: flex;
+  justify-content: space-between;
 }
 
 .btn-delete {
@@ -134,8 +170,8 @@
   height: 30px; /* Hauteur du bouton */
   text-align: center; /* Centrer le texte */
   line-height: 30px; /* Centrer verticalement le texte */
-  padding: 0; /* Supprimer les padding */
-  font-size: 18px; /* Taille de la croix */
+  padding: 0px; /* Supprimer les padding */
+  font-size: 20px; /* Taille de la croix */
 }
 
 .btn-commande {

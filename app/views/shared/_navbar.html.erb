@@ -57,43 +57,44 @@
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title w-100 text-center" id="cartModalLabel">MON PANIER</h5>
+        <div class="modal-title-container">
+          <h5 class="modal-title" id="cartModalLabel">MON PANIER</h5>
+        </div>
         <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
           <i class="fa-solid fa-times"></i>
+        </button>
       </div>
       <div class="modal-body">
         <% if user_signed_in? && current_user.cart&.cart_items.present? %>
-          <table class="table cart-table">
-            <tbody>
-              <% current_user.cart.cart_items.each do |item| %>
-                <tr>
-                  <td class="item-details">
-                    <strong class="perfume-name"><%= item.perfume.name %></strong><br>
-                    <span><%= item.perfume.brand %></span>
-                  </td>
-                  <td class="text-end">
-                    <%= item.quantity %>
-                  </td>
-                  <td class="text-end">
-                    <%= number_to_currency(item.quantity * item.perfume.price, unit: "€", format: "%n %u") %>
-                  </td>
-                  <td class="text-end">
-                    <%= link_to cart_item_path(item), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn btn-delete" do %>
-                      &times;
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <div class="border-top mt-3 pt-2 delivery-total-section">
-            <div class="d-flex justify-content-between">
+          <% total_price = current_user.cart.cart_items.sum { |item| item.quantity * item.perfume.price } %>
+          <% delivery_fee = total_price * 0.10 %>
+          <ul class="cart-list">
+            <% current_user.cart.cart_items.each do |item| %>
+              <li class="cart-item">
+                <div class="item-details">
+                  <strong class="perfume-name"><%= item.perfume.name %></strong>
+                  <span class="perfume-brand"><%= item.perfume.brand %></span>
+                </div>
+                <div class="item-quantity-price">
+                  <span class="item-quantity"><%= item.quantity %></span>
+                  <span class="item-price"><%= number_to_currency(item.quantity * item.perfume.price, unit: "€", format: "%n %u") %></span>
+                </div>
+                <div class="item-delete">
+                  <%= link_to cart_item_path(item), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn btn-delete" do %>
+                    &times;
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+          <div class="border-top mt-4 pt-2 delivery-total-section">
+            <div class="delivery">
               <p><strong>Livraison:</strong></p>
-              <p>0€</p>
+              <p><%= number_to_currency(delivery_fee, unit: "€", format: "%n %u") %></p>
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="total">
               <p><strong>TOTAL:</strong></p>
-              <p id="cart-total"><%= number_to_currency(current_user.cart.cart_items.sum { |item| item.quantity * item.perfume.price }, unit: "€", format: "%n %u") %></p>
+              <p id="cart-total"><%= number_to_currency(total_price + delivery_fee, unit: "€", format: "%n %u") %></p>
             </div>
           </div>
           <div class="text-center mt-3">
