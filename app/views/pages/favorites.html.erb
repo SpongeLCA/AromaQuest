@@ -1,13 +1,14 @@
-<div class="favorite-container">
-  <div class="d-flex align-items-center mb-4 position-relative">
-    <div class="back-icon">
-      <%= link_to dashboard_path do %>
-        <i class="fa-solid fa-chevron-left"></i>
-      <% end %>
-    </div>
-    <h2 class="title-favorite">MES FAVORIS</h2>
-  </div>
 
+<div class="back-orga-result">
+  <div class="back-icon">
+    <%= link_to dashboard_path do %>
+      <i class="fa-solid fa-chevron-left"></i>
+    <% end %>
+  </div>
+  <h2 class="title-result">MES FAVORIS</h2>
+</div>
+
+<div class="favorite-container">
   <div class="card-list">
     <% @favorites.each do |perfume| %>
       <div class="perfume-card">
