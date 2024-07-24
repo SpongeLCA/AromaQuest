@@ -34,7 +34,7 @@
               <div class="order-details2">
                 <p>Livraison</p>
                 <% delivery_fee = order.order_items.sum { |item| item.price * item.quantity } * 0.10 %>
-                <p><%= number_to_currency(delivery_fee, unit: "€") %></p>
+                <p><%= number_to_currency(delivery_fee, unit: "€", format: "%n %u") %></p>
               </div>
               <div class="order-details2">
                 <p>Total</p>
