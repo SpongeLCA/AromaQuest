@@ -53,8 +53,9 @@
                   <i class="fa-solid fa-heart"></i>
                 <% end %>
               <% else %>
-                <%= link_to perfume_favorites_path(perfume_id: perfume.id), method: :post, class: "favorite-button" do %>
-                  <i class="fa-regular fa-heart"></i>
+                <%= link_to perfume_favorites_path(perfume_id: perfume.id), data: { controller: "favorite", action: "favorite#changeFavorite"}, class: "favorite-button" do %>
+                  <i class="fa-regular fa-heart" data-favorite-target="icon"></i>
+                  <div data-favorite-target="notice"></div>
                 <% end %>
               <% end %>
             <% end %>

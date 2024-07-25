@@ -9,9 +9,9 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new(perfume_id: params[:perfume_id])
     @favorite.user_id = current_user.id
     if @favorite.save
-      redirect_to favorites_dashboard_path, notice: 'Ajouté aux favoris'
+      render json: { favorite: true, notice: 'Ajouté à vos favoris' }
     else
-      redirect_to perfumes_path, alert: 'Impossible de rajouter aux favoris'
+      render json: { favorite: false, alert: 'Impossible de rajouter aux favoris' }
     end
   end
 
