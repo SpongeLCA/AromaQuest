@@ -73,7 +73,7 @@
 }
 
 .orders-section {
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* Espacement entre les sections */
   font-family: 'Archivo Black', sans-serif;
   font-weight: bolder;
 
@@ -90,22 +90,25 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 100%; /* Prend toute la largeur du conteneur */
     margin-bottom: 0px;
     margin-top: 20px;
 
     i {
       font-size: 1rem;
       margin-left: 10px;
-      transition: transform 0.3s;
+      text-decoration: none;
+      transform: rotate(360deg);
     }
 
-    &.collapsed i {
-      transform: rotate(180deg);
+    &.collapsed {
+      i {
+        transform: rotate(180deg);
+      }
     }
   }
 
-  .collapse-content {
+  .collapse {
     background-color: white;
     padding: 20px;
     border-radius: 0px;
