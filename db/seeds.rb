@@ -5,6 +5,7 @@ Note.destroy_all
 Review.destroy_all
 Favorite.destroy_all
 Magasin.destroy_all
+Order.destroy_all
 
 puts "Creating users..."
 users = User.create!([
