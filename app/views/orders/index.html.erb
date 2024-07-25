@@ -16,21 +16,25 @@
       <p class="btn btn-inactive">EN MAGASIN</p>
     </div>
 
-    <div class="orders-section">
+    <div class="orders-section" data-controller="collapse">
       <% if @orders.any? %>
         <% @orders.each do |order| %>
           <div class="order-item">
-            <button class="btn-order" data-bs-toggle="collapse" data-bs-target="#order-<%= order.id %>" aria-expanded="false" aria-controls="order-<%= order.id %>">
-              COMMANDE DU <%= formatted_date(order.created_at).upcase %><i class="fa-solid fa-chevron-down"></i>
+            <button
+              class="btn-order"
+              data-action="click->collapse#toggle"
+              data-collapse-id="<%= order.id %>">
+              COMMANDE DU <%= formatted_date(order.created_at).upcase %>
+              <i class="fa-solid fa-chevron-down"></i>
             </button>
-            <div class="collapse" id="order-<%= order.id %>">
+            <div class="collapse-content d-none" data-collapse-target="content" id="order-<%= order.id %>">
               <div class="order-details">
                 <% order.order_items.each do |item| %>
-                <div class="order-details2">
-                  <h5><%= item.perfume.name.upcase %></h5>
-                  <p><%= item.quantity %> </p>
-                  <p><%= number_to_currency(item.price, unit: "€", format: "%n %u") %></p>
-                </div>
+                  <div class="order-details2">
+                    <h5><%= item.perfume.name.upcase %></h5>
+                    <p><%= item.quantity %></p>
+                    <p><%= number_to_currency(item.price, unit: "€", format: "%n %u") %></p>
+                  </div>
                 <% end %>
                 <hr class="hr-order">
                 <div class="order-details2">
@@ -50,6 +54,6 @@
       <% else %>
         <p>Aucune commande disponible pour le moment.</p>
       <% end %>
-    </div>
+  </div>
   </div>
 </div>

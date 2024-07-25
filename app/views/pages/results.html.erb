@@ -10,27 +10,28 @@
 <div class="results-container">
   <p>Retrouvez les listes de parfums générées via les questionnaires effectués.</p>
 
-  <div class="resultats-section">
-      <p data-bs-toggle="collapse" href="#resultats" role="button" aria-expanded="false" aria-controls="resultats" class="btn-resultats">
-        TOUS MES RESULTATS <i class="fa-solid fa-chevron-down"></i>
-      </p>
-      <div class="collapse" id="resultats">
-        <div class="collapse-result">
-          <% if @results.any? %>
-            <% @results.each do |result| %>
-              <ul>
-                <%= link_to result_path(result) do %>
-                  <li>RÉSULTATS DU <%= formatted_date(result.created_at).upcase %></li>
-                <% end %>
-                  <hr>
-              </ul>
-            <% end %>
-          <% else %>
-            <p>Aucune résultat disponible pour le moment.</p>
+  <!-- Résultats -->
+  <div class="resultats-section" data-controller="collapse">
+    <p role="button" class="btn-resultats" data-action="click->collapse#toggle">
+      TOUS MES RESULTATS <i class="fa-solid fa-chevron-down"></i>
+    </p>
+    <div class="collapse-content d-none" data-collapse-target="content">
+      <div class="collapse-result">
+        <% if @results.any? %>
+          <% @results.each do |result| %>
+            <ul>
+              <%= link_to result_path(result) do %>
+                <li>RÉSULTATS DU <%= formatted_date(result.created_at).upcase %></li>
+              <% end %>
+            </ul>
           <% end %>
-        </div>
+        <% else %>
+          <p>Aucun résultat disponible pour le moment.</p>
+        <% end %>
       </div>
     </div>
+  </div>
+
 
 
   <h2 class="title-result text-center">CES PARFUMS QUI VOUS CORRESPONDENT...</h2>
