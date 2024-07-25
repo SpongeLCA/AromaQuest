@@ -1,16 +1,15 @@
-.back-orga-result{
+.back-orga-result {
   background-color: white;
   padding: 20px;
   box-sizing: border-box;
   border-bottom: 1px solid #eaeaea;
   width: 100%;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  // position: relative;
   position: sticky;
-  top :0px;
+  top: 0px;
   z-index: 1000;
 
   .back-icon-result {
@@ -18,7 +17,7 @@
     left: 0;
     display: flex;
     align-items: center;
-    padding:20px;
+    padding: 20px;
 
     .fa-chevron-left {
       font-size: 1.5rem;
@@ -37,45 +36,7 @@
 
 .results-container {
   padding: 20px;
-  background-color:#F3F2ED;
-
-
-
-  // .dropdown {
-  //   text-align: center;
-  //   margin: 20px 0;
-
-  //   .dropdown-toggle {
-  //     background-color: #a8a89e;
-  //     border: none;
-  //     padding: 10px 20px;
-  //     font-size: 16px;
-  //     color: #fff;
-  //     cursor: pointer;
-  //   }
-
-  //   .dropdown-menu {
-  //     background-color: #a8a89e;
-  //     width: 100%;
-  //     text-align: center;
-  //     padding: 0;
-
-  //     .dropdown-item {
-  //       font-size: 16px;
-  //       padding: 10px;
-  //       color: #fff;
-  //       border-bottom: 1px solid #fff;
-
-  //       &:last-child {
-  //         border-bottom: none;
-  //       }
-  //     }
-
-  //     .dropdown-item:hover {
-  //       background-color: #949483;
-  //     }
-  //   }
-  // }
+  background-color: #F3F2ED;
 
   .sub-title {
     font-size: 20px;
@@ -136,57 +97,59 @@
 }
 
 .resultats-section {
-  margin-bottom: 30px; // Espacement entre les sections
-  text-align:center;
-
-.btn-resultats {
-  background-color: #9A9B89;
-  margin-bottom:0px;
-  color: #fff;
-  border-radius: 4px;
-  padding: 10px;
+  margin-bottom: 30px;
   text-align: center;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-   width: 100%; // Prend toute la largeur du conteneur
 
-  i {
-    font-size: 1rem;
-    margin-left: 10px;
-    text-decoration: none;
-  }
+  .btn-resultats {
+    background-color: #9A9B89;
+    margin-bottom: 0px;
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Prend toute la largeur du conteneur */
 
-  &.collapsed {
     i {
-      transform: rotate(180deg);
+      font-size: 1rem;
+      margin-left: 10px;
+      text-decoration: none;
+    }
+
+    &.collapsed {
+      i {
+        transform: rotate(180deg);
+      }
     }
   }
-}
 
-  .collapse{
-    background-color: #9A9B89; // Même fond que le bouton
-    padding: 10px; // Espacement
-    border-radius: 0px 0px 4px 4px; // Coins arrondis
-    width: 100%; // Assure que la section de notes prend toute la largeur
-    box-sizing: border-box; // Inclut le padding et la bordure dans la largeur totale
+  .collapse-content {
+    background-color: #9A9B89;
+    padding: 10px;
+    border-radius: 0px 0px 4px 4px;
+    width: 100%;
+    box-sizing: border-box;
     text-decoration: none;
 
-    ul{
+    ul {
       text-align: left;
-      font-family: 'archivo', sans-serif;
+      font-family: 'Archivo', sans-serif;
     }
 
     li {
       list-style-type: none;
       margin-bottom: 10px;
       text-decoration: none;
-      color: black; // Texte en blanc
+      color: black;
       font-weight: bold;
       text-align: center;
       font-family: 'Archivo', sans-serif;
+      margin-right: 25px;
     }
+
     a {
       text-decoration: none;
       color: black;
@@ -195,7 +158,6 @@
     hr {
       color: white;
       width: 60%;
-      border:5px;
       border: 0.5px solid white;
     }
   }

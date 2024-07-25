@@ -3,7 +3,6 @@
   box-sizing: border-box; /* Inclut le padding dans la largeur totale du conteneur */
 }
 
-
 .banner-myorders {
   position: sticky; /* Position relative pour l'icône de retour */
   top: 0;
@@ -13,7 +12,6 @@
   width: 100%; /* Prend toute la largeur de l'écran */
   box-sizing: border-box; /* Inclut le padding dans la largeur totale */
   z-index: 1000;
-
 
   .back-icon {
     position: absolute; /* Positionnement absolu pour l'icône */
@@ -43,7 +41,7 @@
   }
 }
 
-.orders-tab{
+.orders-tab {
   background-color: #fff;
   color: black;
   font-family: 'Archivo Black', sans-serif;
@@ -54,7 +52,6 @@
   margin-bottom: 20px;
   z-index: 999;
 
-
   p {
     font-weight: bold;
     font-size: 14px;
@@ -62,20 +59,21 @@
     width: 100%;
     margin: 0;
   }
-  .btn-active{
-    color :black;
+
+  .btn-active {
+    color: black;
     background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     border-radius: 4px;
   }
 
-  .btn-inactive{
+  .btn-inactive {
     opacity: 0.5;
   }
 }
 
 .orders-section {
-  margin-bottom: 30px; // Espacement entre les sections
+  margin-bottom: 30px;
   font-family: 'Archivo Black', sans-serif;
   font-weight: bolder;
 
@@ -92,34 +90,31 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%; // Prend toute la largeur du conteneur
+    width: 100%;
     margin-bottom: 0px;
-    margin-top:20px;
+    margin-top: 20px;
 
     i {
       font-size: 1rem;
       margin-left: 10px;
-      text-decoration: none;
-      transform: rotate(360deg);
+      transition: transform 0.3s;
     }
 
-    &.collapsed {
-      i {
-        transform: rotate(180deg);
-      }
+    &.collapsed i {
+      transform: rotate(180deg);
     }
   }
 
-  .collapse{
-    background-color:white; // Même fond que le bouton
-    padding: 20px; // Espacement
-    border-radius: 0px; // Coins arrondis
-    width: 100%; // Assure que la section de notes prend toute la largeur
-    box-sizing: border-box; // Inclut le padding et la bordure dans la largeur totale
+  .collapse-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 0px;
+    width: 100%;
+    box-sizing: border-box;
     margin-bottom: 20px;
   }
 
-  .order-details{
+  .order-details {
     font-weight: bold;
 
     .order-details2 {
@@ -131,11 +126,11 @@
     h5 {
       font-weight: bold;
       font-size: 14px;
-      width : 170px;
+      width: 170px;
     }
 
     p {
-      margin : 5px;
+      margin: 5px;
     }
 
     .hr-order {
@@ -146,6 +141,4 @@
       width: 100%;
     }
   }
-
-
 }

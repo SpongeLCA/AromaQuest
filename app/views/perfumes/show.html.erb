@@ -115,11 +115,12 @@
     </div>
 
     <!-- Notes de parfum -->
-    <div class="notes-section">
-      <p data-bs-toggle="collapse" href="#notes" role="button" aria-expanded="false" aria-controls="notes" class="btn-notes">
-        Notes de parfum <i class="fa-solid fa-chevron-down"></i>
+    <div class="notes-section" data-controller="collapse">
+      <p role="button" class="btn-notes" data-action="click->collapse#toggle">
+        Notes de parfum
+        <i class="fa-solid fa-chevron-down"></i>
       </p>
-      <div class="collapse" id="notes">
+      <div class="collapse-notes d-none" data-collapse-target="content">
         <% if @perfume.notes.any? %>
           <% @perfume.notes.each do |note| %>
             <ul>
@@ -133,7 +134,9 @@
         <% end %>
       </div>
     </div>
-  </div>
+
+
+
 
   <!-- Modal pour partager -->
   <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">

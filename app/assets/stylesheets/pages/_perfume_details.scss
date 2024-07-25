@@ -17,8 +17,8 @@
 
 // Card avec l'image du parfum
 .perfume-image-card-wrapper {
-  text-align: center; // Centre la card avec l'image
-  margin-bottom: 40px; // Espacement entre les sections
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .perfume-image-card {
@@ -61,7 +61,7 @@
 
 // Partie avec les boutons "Trouver mon parfum" et "Cart"
 .action-buttons-wrapper {
-  margin-bottom: 40px; // Espacement entre les sections
+  margin-bottom: 40px;
 }
 
 .action-buttons {
@@ -199,7 +199,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%; // Prend toute la largeur du conteneur
+    width: 100%;
 
     i {
       font-size: 1rem;
@@ -213,18 +213,22 @@
     }
   }
 
-  .collapse {
-    background-color: #9A9B89; // Même fond que le bouton
-    color: #fff; // Texte en blanc
-    padding: 10px; // Espacement
-    border-radius: 4px; // Coins arrondis
-    margin-top: 10px; // Espacement en haut
-    width: 100%; // Assure que la section de notes prend toute la largeur
-    box-sizing: border-box; // Inclut le padding et la bordure dans la largeur totale
+  .collapse-notes {
+    background-color: #9A9B89;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .notes-section, .btn-notes, .collapse {
+    margin: 0;
+    padding: 10px;
+    border: none;
   }
 }
 
-// Modal pour partager
+// Modal pour partager sur WhatsApp
 .modal-content {
   .modal-header {
     .modal-title {
