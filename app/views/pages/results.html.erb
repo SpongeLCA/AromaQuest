@@ -20,7 +20,7 @@
             <% @results.each do |result| %>
               <ul>
                 <%= link_to result_path(result) do %>
-                  <li>VOS RESULTATS DU <%= formatted_date(result.created_at).upcase %></li>
+                  <li>RÉSULTATS DU <%= formatted_date(result.created_at).upcase %></li>
                 <% end %>
                   <hr>
               </ul>

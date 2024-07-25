@@ -1,58 +1,49 @@
-<div class="order-details-container">
-  <div class="back-orga-recap">
+<div class="order-recap-container">
+  <div class="back-nav-recap">
     <div class="back-icon-recap">
       <%= link_to orders_path do %>
         <i class="fa-solid fa-chevron-left"></i>
       <% end %>
     </div>
-    <h2 class="title-order">RÉCAPITULATIF DE COMMANDE</h2>
+    <h2 class="recap-title">RÉCAPITULATIF DE COMMANDE</h2>
   </div>
   <p>Merci pour votre commande !</p>
   <p>Retrouvez les détails de votre commande passée le <%= formatted_date(@order.created_at).upcase %> :</p>
 
-  <div class="card order-card">
-    <div class="order-items">
-      <div class="order-item-header">
-        <div class="order-item-details-header">
+  <div class="recap-card">
+    <div class="recap-items">
+      <div class="recap-item-header">
+        <div class="recap-item-details-header">
           <strong>Produit</strong>
         </div>
-        <div class="order-item-quantity-price-header">
+        <div class="recap-item-quantity-price-header">
           <strong>Quantité</strong>
         </div>
-        <div class="order-item-quantity-price-header">
+        <div class="recap-item-quantity-price-header">
           <strong>Prix</strong>
         </div>
       </div>
-      <hr class="item-separator">
       <% @order.order_items.each do |item| %>
-        <div class="order-item d-flex justify-content-between align-items-center">
-          <div class="order-item-details">
-            <%# <div class="order-item-image"> %>
-              <%# <%= image_tag item.perfume.photo, class: 'img-thumbnail' %>
-            <%# </div> %>
-            <div class="order-item-info ml-2">
-              <h5><strong><%= item.perfume.name.upcase %></strong></h5>
-              <p><strong><%= item.perfume.brand %></strong></p>
-            </div>
+        <div class="recap-item d-flex justify-content-between align-items-center">
+          <div class="recap-item-details">
+            <strong class="recap-perfume-name"><%= item.perfume.name.upcase %></strong>
+            <span class="recap-perfume-brand"><%= item.perfume.brand %></span>
           </div>
-          <div class="order-item-quantity">
-            <span><%= item.quantity %></span>
-          </div>
-          <div class="order-item-price">
-            <span><%= number_to_currency(item.price, unit: "€", format: "%n %u") %></span>
+          <div class="recap-item-quantity-price">
+            <span class="recap-item-quantity"><%= item.quantity %></span>
+            <span class="recap-item-price"><%= number_to_currency(item.price, unit: "€", format: "%n %u") %></span>
           </div>
         </div>
-        <hr class="item-separator">
       <% end %>
     </div>
-    <div class="order-summary d-flex justify-content-between align-items-center">
-      <div>
-        <p>Livraison</p>
-        <p>Total</p>
-      </div>
-      <div>
+    <div class="border-top mt-4 pt-2 recap-delivery-total-section">
+      <div class="recap-delivery">
+        <p><strong>Livraison:</strong></p>
         <p><%= number_to_currency(@delivery_fee, unit: "€", format: "%n %u") %></p>
-        <p><%= number_to_currency(@total_with_delivery, unit: "€", format: "%n %u") %></p>
+      </div>
+      <div class="recap-total">
+        <p><strong>TOTAL:</strong></p>
+        <p id="recap-cart-total"><%= number_to_currency(@total_with_delivery, unit: "€", format: "%n %u") %></p>
       </div>
     </div>
   </div>
