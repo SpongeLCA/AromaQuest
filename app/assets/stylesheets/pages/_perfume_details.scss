@@ -221,6 +221,9 @@
     margin-top: 10px; // Espacement en haut
     width: 100%; // Assure que la section de notes prend toute la largeur
     box-sizing: border-box; // Inclut le padding et la bordure dans la largeur totale
+    &::show{
+      transition: auto 0s ease 0s;
+    }
   }
 }
 
