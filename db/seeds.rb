@@ -217,7 +217,6 @@ comments = [
   'Parfum léger et subtil.',
   'Parfait pour une soirée!',
   'Odeur très agréable.',
-  'Je ne suis pas fan de ce parfum.',
   'Ce parfum est mon préféré!'
 ]
 
